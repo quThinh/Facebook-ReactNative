@@ -9,14 +9,15 @@ import { Platform } from "react-native";
 import { navigationRef } from "./rootNavigation";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
+
 import { NavigationContainer, useIsFocused } from "@react-navigation/native";
 import {
   createStackNavigator,
   TransitionPresets,
+  StackNavigationOptions
 } from "@react-navigation/stack";
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { StackNavigationOptions } from "@react-navigation/stack";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
@@ -25,6 +26,8 @@ const rootStack = createStackNavigator();
 import { BASE_URL, STATUSBAR_HEIGHT } from "./constants";
 
 import HomeScreen from "./src/screens/HomeScreen";
+import GroupScreen from './src/screens/GroupTab'
+import WatchScreen from './src/screens/WatchTab'
 import Search from "./src/screens/Search";
 
 const HomeTab = () => {
@@ -49,24 +52,26 @@ const HomeTab = () => {
   );
 };
 
-// const groupTab = () => {
-// 	return (
-// 		<Stack.Navigator screenOptions={{ headerShown: false }}>
-// 			<Stack.Screen name="Group" component={GroupScreen} />
-// 		</Stack.Navigator>
-// 	)
-// }
-// const WatchScreenWithIsFocused = (props) => {
-// 	const isFocused = useIsFocused();
-// 	return <WatchScreen {...props} isFocused={isFocused}></WatchScreen>;
-// }
-// const watchTab = () => {
-// 	return (
-// 		<Stack.Navigator screenOptions={{ headerShown: false }}>
-// 			<Stack.Screen name="Watch" component={WatchScreenWithIsFocused} />
-// 		</Stack.Navigator>
-// 	)
-// }
+const groupTab = () => {
+	return (
+		<Stack.Navigator screenOptions={{ headerShown: false }}>
+			<Stack.Screen name="Group" component={GroupScreen} />
+		</Stack.Navigator>
+	)
+}
+const WatchScreenWithIsFocused = (props: JSX.IntrinsicAttributes & { [x: string]: any; }) => {
+	const isFocused = useIsFocused();
+	return <WatchScreen {...props} isFocused={isFocused}></WatchScreen>;
+}
+
+const watchTab = () => {
+	return (
+		<Stack.Navigator screenOptions={{ headerShown: false }}>
+			<Stack.Screen name="Watch" component={WatchScreenWithIsFocused} />
+		</Stack.Navigator>
+	)
+}
+
 // const profileTab = () => {
 // 	return (
 // 		<Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -111,10 +116,10 @@ const MainTab = () => {
         name="Home"
         component={HomeTab}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='users' size={20} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
 				name="Group" component={groupTab} />
-			<Tab.Screen
+			{/* <Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='video' size={20} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
 				name="Watch" component={watchTab} />
 			<Tab.Screen
