@@ -1,7 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-// import { NavigationContainer } from '@react-navigation/native'
 import { ThemeProvider } from "react-native-elements";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -29,6 +28,19 @@ import GroupScreen from "./src/screens/GroupTab";
 import WatchScreen from "./src/screens/WatchTab";
 import NotificationScreen from "./src/screens/NotificationTab";
 import ShortCutScreen from "./src/screens/ShortCutTab";
+import Comments from "./src/screens/Comments";
+
+import ProfileScreen from "./src/screens/ProfileTab";
+import ProfileX from "./src/screens/ProfileTab/ProfileX";
+import ProfileSetting from "./src/screens/ProfileTab/ProfileSetting";
+import ProfilePostOptions from "./src/screens/ProfileTab/ProfilePostOptions";
+import EditPublicInfo from "./src/screens/ProfileTab/EditPublicInfo";
+import FullFriends from "./src/screens/ProfileTab/FullFriends";
+import FriendOptions from "./src/screens/ProfileTab/FriendOptions";
+import AvatarOptions from "./src/screens/ProfileTab/AvatarOptions";
+import FindFriends from "./src/screens/ProfileTab/FindFriends";
+import FriendRequests from "./src/screens/ProfileTab/FriendRequests";
+
 import Search from "./src/screens/Search";
 
 const HomeTab = () => {
@@ -48,12 +60,12 @@ const HomeTab = () => {
     >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
 
-      {/* <Stack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="Comments" component={Comments} /> */}
+      <Stack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="Comments" component={Comments} />
     </Stack.Navigator>
   );
 };
 
-const groupTab = () => {
+const GroupTab = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Group" component={GroupScreen} />
@@ -67,7 +79,7 @@ const WatchScreenWithIsFocused = (
   return <WatchScreen {...props} isFocused={isFocused}></WatchScreen>;
 };
 
-const watchTab = () => {
+const WatchTab = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Watch" component={WatchScreenWithIsFocused} />
@@ -75,21 +87,22 @@ const watchTab = () => {
   );
 };
 
-// const profileTab = () => {
-// 	return (
-// 		<Stack.Navigator screenOptions={{ headerShown: false }}>
-// 			<Stack.Screen name="Profile" component={ProfileScreen} />
-// 		</Stack.Navigator>
-// 	)
-// }
-const notificationTab = () => {
+const ProfileTab = () => {
+	return (
+		<Stack.Navigator screenOptions={{ headerShown: false }}>
+			<Stack.Screen name="Profile" component={ProfileScreen} />
+		</Stack.Navigator>
+	)
+}
+
+const NotificationTab = () => {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
 			<Stack.Screen name="Notification" component={NotificationScreen} />
 		</Stack.Navigator>
 	)
 }
-const shortCutTab = () => {
+const ShortCutTab = () => {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
 			<Stack.Screen name="ShortCutIndex" component={ShortCutScreen} />
@@ -98,14 +111,14 @@ const shortCutTab = () => {
 }
 const MainTab = () => {
   const navigationOptions = {
-    style: {
+    tabBarStyle: {
       paddingTop: STATUSBAR_HEIGHT,
     },
-    showIcon: true,
-    showLabel: false,
+    tabBarShowIcon: true,
+    tabBarShowLabel: false,
   };
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={navigationOptions}>
       <Tab.Screen
         options={{
           tabBarIcon: ({ color, focused }) => (
@@ -130,14 +143,14 @@ const MainTab = () => {
           ),
         }}
         name="Group"
-        component={groupTab}
+        component={GroupTab}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='video' size={20} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
-				name="Watch" component={watchTab} />
+				name="Watch" component={WatchTab} />
 			<Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='user-circle' size={22} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
-				name="Profile" component={profileTab} /> */}
+				name="Profile" component={ProfileTab} />
       <Tab.Screen
         options={{
           tabBarIcon: ({ color, focused }) => (
@@ -149,11 +162,11 @@ const MainTab = () => {
           ),
         }}
         name="Notification"
-        component={notificationTab}
+        component={NotificationTab}
       />
       <Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='bars' size={20} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
-				name="ShortCut" component={shortCutTab} />
+				name="ShortCut" component={ShortCutTab} />
     </Tab.Navigator>
   );
 };
@@ -191,9 +204,11 @@ function App() {
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="WatchSearch" component={WatchSearch} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="SeenVideos" component={SeenVideos} />
 					<rootStack.Screen options={{ gestureEnabled: true }} name="WatchDetail" component={WatchDetail} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="WatchDetailList" component={WatchDetailList} />
+					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="WatchDetailList" component={WatchDetailList} /> */}
 
-					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="ProfilePostOptions" component={ProfilePostOptions} />
+
+
+					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="ProfilePostOptions" component={ProfilePostOptions} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="EditPublicInfo" component={EditPublicInfo} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="FullFriends" component={FullFriends} />
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="FriendOptions" component={FriendOptions} />
