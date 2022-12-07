@@ -9,12 +9,11 @@ import { Platform } from "react-native";
 import { navigationRef } from "./rootNavigation";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-
 import { NavigationContainer, useIsFocused } from "@react-navigation/native";
 import {
   createStackNavigator,
   TransitionPresets,
-  StackNavigationOptions
+  StackNavigationOptions,
 } from "@react-navigation/stack";
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
@@ -26,8 +25,10 @@ const rootStack = createStackNavigator();
 import { BASE_URL, STATUSBAR_HEIGHT } from "./constants";
 
 import HomeScreen from "./src/screens/HomeScreen";
-import GroupScreen from './src/screens/GroupTab'
-import WatchScreen from './src/screens/WatchTab'
+import GroupScreen from "./src/screens/GroupTab";
+import WatchScreen from "./src/screens/WatchTab";
+import NotificationScreen from "./src/screens/NotificationTab";
+import ShortCutScreen from "./src/screens/ShortCutTab";
 import Search from "./src/screens/Search";
 
 const HomeTab = () => {
@@ -53,24 +54,26 @@ const HomeTab = () => {
 };
 
 const groupTab = () => {
-	return (
-		<Stack.Navigator screenOptions={{ headerShown: false }}>
-			<Stack.Screen name="Group" component={GroupScreen} />
-		</Stack.Navigator>
-	)
-}
-const WatchScreenWithIsFocused = (props: JSX.IntrinsicAttributes & { [x: string]: any; }) => {
-	const isFocused = useIsFocused();
-	return <WatchScreen {...props} isFocused={isFocused}></WatchScreen>;
-}
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Group" component={GroupScreen} />
+    </Stack.Navigator>
+  );
+};
+const WatchScreenWithIsFocused = (
+  props: JSX.IntrinsicAttributes & { [x: string]: any }
+) => {
+  const isFocused = useIsFocused();
+  return <WatchScreen {...props} isFocused={isFocused}></WatchScreen>;
+};
 
 const watchTab = () => {
-	return (
-		<Stack.Navigator screenOptions={{ headerShown: false }}>
-			<Stack.Screen name="Watch" component={WatchScreenWithIsFocused} />
-		</Stack.Navigator>
-	)
-}
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Watch" component={WatchScreenWithIsFocused} />
+    </Stack.Navigator>
+  );
+};
 
 // const profileTab = () => {
 // 	return (
@@ -79,20 +82,20 @@ const watchTab = () => {
 // 		</Stack.Navigator>
 // 	)
 // }
-// const notificationTab = () => {
-// 	return (
-// 		<Stack.Navigator screenOptions={{ headerShown: false }}>
-// 			<Stack.Screen name="Notification" component={NotificationScreen} />
-// 		</Stack.Navigator>
-// 	)
-// }
-// const shortCutTab = () => {
-// 	return (
-// 		<Stack.Navigator screenOptions={{ headerShown: false }}>
-// 			<Stack.Screen name="ShortCutIndex" component={ShortCutScreen} />
-// 		</Stack.Navigator>
-// 	)
-// }
+const notificationTab = () => {
+	return (
+		<Stack.Navigator screenOptions={{ headerShown: false }}>
+			<Stack.Screen name="Notification" component={NotificationScreen} />
+		</Stack.Navigator>
+	)
+}
+const shortCutTab = () => {
+	return (
+		<Stack.Navigator screenOptions={{ headerShown: false }}>
+			<Stack.Screen name="ShortCutIndex" component={ShortCutScreen} />
+		</Stack.Navigator>
+	)
+}
 const MainTab = () => {
   const navigationOptions = {
     style: {
@@ -117,20 +120,40 @@ const MainTab = () => {
         component={HomeTab}
       />
       <Tab.Screen
-				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='users' size={20} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
-				name="Group" component={groupTab} />
-			{/* <Tab.Screen
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <Icon
+              name="users"
+              size={20}
+              color={focused ? "#318bfb" : "#ddd"}
+            ></Icon>
+          ),
+        }}
+        name="Group"
+        component={groupTab}
+      />
+      {/* <Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='video' size={20} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
 				name="Watch" component={watchTab} />
 			<Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='user-circle' size={22} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
-				name="Profile" component={profileTab} />
-			<Tab.Screen
-				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='bell' size={22} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
-				name="Notification" component={notificationTab} />
-			<Tab.Screen
+				name="Profile" component={profileTab} /> */}
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <Icon
+              name="bell"
+              size={22}
+              color={focused ? "#318bfb" : "#ddd"}
+            ></Icon>
+          ),
+        }}
+        name="Notification"
+        component={notificationTab}
+      />
+      <Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='bars' size={20} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
-				name="ShortCut" component={shortCutTab} /> */}
+				name="ShortCut" component={shortCutTab} />
     </Tab.Navigator>
   );
 };
