@@ -1,44 +1,53 @@
-import { StatusBar } from 'expo-status-bar'
-import React from 'react'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 // import { NavigationContainer } from '@react-navigation/native'
-import { ThemeProvider } from 'react-native-elements'
-import { Provider } from 'react-redux'
-import store from './store'
-import { Platform } from 'react-native';
-import { navigationRef } from './rootNavigation'
-import Icon from 'react-native-vector-icons/FontAwesome5'
+import { ThemeProvider } from "react-native-elements";
+import { Provider } from "react-redux";
+import store from "./store";
+import { Platform } from "react-native";
+import { navigationRef } from "./rootNavigation";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
-import { NavigationContainer, useIsFocused } from '@react-navigation/native';
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import { NavigationContainer, useIsFocused } from "@react-navigation/native";
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from "@react-navigation/stack";
 
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { StackNavigationOptions } from '@react-navigation/stack';
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { StackNavigationOptions } from "@react-navigation/stack";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
 const rootStack = createStackNavigator();
 
-import { BASE_URL, STATUSBAR_HEIGHT } from './constants'
+import { BASE_URL, STATUSBAR_HEIGHT } from "./constants";
 
-import HomeScreen from './src/screens/HomeScreen'
-import Search from './src/screens/Search'
+import HomeScreen from "./src/screens/HomeScreen";
+import Search from "./src/screens/Search";
 
 const HomeTab = () => {
-	// CameraRoll.getPhotos({
-	// 	first: 20,
-	// 	assetType: 'Photos',
-	// }).then(result => {
-	// 	console.log(result)
-	// })
-	return (
-		<Stack.Navigator screenOptions={{ headerShown: false, ...TransitionPresets.ModalSlideFromBottomIOS, gestureResponseDistance: 800  }}>
-			<Stack.Screen name="HomeScreen" component={HomeScreen} />
+  // CameraRoll.getPhotos({
+  // 	first: 20,
+  // 	assetType: 'Photos',
+  // }).then(result => {
+  // 	console.log(result)
+  // })
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        ...TransitionPresets.ModalSlideFromBottomIOS,
+        gestureResponseDistance: 800,
+      }}
+    >
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
 
-			{/* <Stack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="Comments" component={Comments} /> */}
-		</Stack.Navigator>
-	)
-}
+      {/* <Stack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="Comments" component={Comments} /> */}
+    </Stack.Navigator>
+  );
+};
 
 // const groupTab = () => {
 // 	return (
@@ -80,19 +89,29 @@ const HomeTab = () => {
 // 	)
 // }
 const MainTab = () => {
-	const navigationOptions = {
-		style: {
-			paddingTop: STATUSBAR_HEIGHT
-		},
-		showIcon: true,
-		showLabel: false,
-	}
-	return (
-		<Tab.Navigator>
-			<Tab.Screen
-				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='home' size={20} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
-				name="Home" component={HomeTab} />
-			{/* <Tab.Screen
+  const navigationOptions = {
+    style: {
+      paddingTop: STATUSBAR_HEIGHT,
+    },
+    showIcon: true,
+    showLabel: false,
+  };
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <Icon
+              name="home"
+              size={20}
+              color={focused ? "#318bfb" : "#ddd"}
+            ></Icon>
+          ),
+        }}
+        name="Home"
+        component={HomeTab}
+      />
+      {/* <Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='users' size={20} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
 				name="Group" component={groupTab} />
 			<Tab.Screen
@@ -107,23 +126,23 @@ const MainTab = () => {
 			<Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='bars' size={20} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
 				name="ShortCut" component={shortCutTab} /> */}
-		</Tab.Navigator>
-
-	);
-}
+    </Tab.Navigator>
+  );
+};
 function App() {
-	const TransitionPreset = Platform.OS === 'ios' ? TransitionPresets.ModalSlideFromBottomIOS : {}
-	const navigationOptions: StackNavigationOptions = {
-		headerShown: false,
-		...TransitionPreset,
-		gestureResponseDistance: 800
-	}
-	return (
-		<Provider store={store}>
-			<NavigationContainer ref={navigationRef} >
-				<rootStack.Navigator screenOptions={navigationOptions}>
-					<rootStack.Screen component={MainTab} name="MainTab" />
-					{/* <rootStack.Screen name="StoryDetail" component={StoryDetailScreen} />
+  const TransitionPreset =
+    Platform.OS === "ios" ? TransitionPresets.ModalSlideFromBottomIOS : {};
+  const navigationOptions: StackNavigationOptions = {
+    headerShown: false,
+    ...TransitionPreset,
+    gestureResponseDistance: 800,
+  };
+  return (
+    <Provider store={store}>
+      <NavigationContainer ref={navigationRef}>
+        <rootStack.Navigator screenOptions={navigationOptions}>
+          <rootStack.Screen component={MainTab} name="MainTab" />
+          {/* <rootStack.Screen name="StoryDetail" component={StoryDetailScreen} />
 					<rootStack.Screen name="PostDetail" component={PostDetail} />
 
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="Marketplace" component={Marketplace} />
@@ -170,9 +189,9 @@ function App() {
 					<rootStack.Screen name="CheckIn" component={CheckIn} />
 					<rootStack.Screen name="PhotoUploader" component={PhotoUploader} />
 					<rootStack.Screen name="LiveStream" component={LiveStream} /> */}
-				</rootStack.Navigator>
-			</NavigationContainer>
-		</Provider>
-	)
+        </rootStack.Navigator>
+      </NavigationContainer>
+    </Provider>
+  );
 }
 export default App;
