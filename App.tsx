@@ -29,6 +29,8 @@ import WatchScreen from "./src/screens/WatchTab";
 import NotificationScreen from "./src/screens/NotificationTab";
 import ShortCutScreen from "./src/screens/ShortCutTab";
 import Comments from "./src/screens/Comments";
+import PostDetail from './src/screens/PostDetail'
+import StoryDetailScreen from './src/screens/StoryDetail'
 
 import ProfileScreen from "./src/screens/ProfileTab";
 import ProfileX from "./src/screens/ProfileTab/ProfileX";
@@ -191,10 +193,10 @@ function App() {
       <NavigationContainer ref={navigationRef}>
         <rootStack.Navigator screenOptions={navigationOptions}>
           <rootStack.Screen component={MainTab} name="MainTab" />
-          {/* <rootStack.Screen name="StoryDetail" component={StoryDetailScreen} />
+          <rootStack.Screen name="StoryDetail" component={StoryDetailScreen} />
 					<rootStack.Screen name="PostDetail" component={PostDetail} />
 
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="Marketplace" component={Marketplace} />
+					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="Marketplace" component={Marketplace} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="MarketplaceSearch" component={MarketplaceSearch} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="MarketplaceProductDetail" component={MarketplaceProductDetail} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="MarketplaceCategory" component={MarketplaceCategory} />
