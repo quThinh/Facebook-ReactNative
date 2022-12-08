@@ -47,11 +47,13 @@ class index extends Component {
       Animated.timing(this._moreOptionsHeight, {
         toValue: 0,
         duration: 400,
+        useNativeDriver: false,
       }).start();
     } else
       Animated.timing(this._moreOptionsHeight, {
         toValue: this._maxOptionsHeight,
         duration: 600,
+        useNativeDriver: false,
       }).start();
     this.setState({
       ...this.state,

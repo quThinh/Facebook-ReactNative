@@ -122,7 +122,7 @@ class index extends Component {
               </TouchableOpacity>
             </ScrollView>
           </View>
-          <GroupPosts></GroupPosts>
+          {/* <GroupPosts></GroupPosts> */}
         </ScrollView>
       </View>
     );

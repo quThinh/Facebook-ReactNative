@@ -7,7 +7,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest --watchAll",
-    "dbstart": "json-server .mock-db/db.json --host 192.168.1.5"
+    "dbstart": "json-server .mock-db/db.json --host 192.168.1.6"
   },
   "jest": {
     "preset": "jest-expo"
@@ -38,6 +38,7 @@
     "react-native-elements": "^3.3.2",
     "react-native-gesture-handler": "~2.5.0",
     "react-native-pager-view": "^6.1.2",
+    "react-native-root-toast": "^3.3.1",
     "react-native-safe-area-context": "4.3.1",
     "react-native-screens": "~3.15.0",
     "react-native-status-bar-height": "^2.6.0",

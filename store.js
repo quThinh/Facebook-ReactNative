@@ -4,5 +4,12 @@ import reducer from "./reducers/index";
 // import thunk from "redux-thunk";
 // const middlewares = [thunk];
 // const enhancers = [applyMiddleware(...middlewares)];
-let store = configureStore({ reducer: reducer });
+const store = configureStore({
+  reducer: reducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      immutableCheck: false,
+      serializableCheck: false,
+    }),
+});
 export default store;

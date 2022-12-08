@@ -7,6 +7,7 @@ import store from "./store";
 import { Platform } from "react-native";
 import { navigationRef } from "./rootNavigation";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import axios from 'axios'
 
 import { NavigationContainer, useIsFocused } from "@react-navigation/native";
 import {
@@ -24,7 +25,6 @@ const rootStack = createStackNavigator();
 import { BASE_URL, STATUSBAR_HEIGHT } from "./constants";
 
 import HomeScreen from "./src/screens/HomeScreen";
-import GroupScreen from "./src/screens/GroupTab";
 import WatchScreen from "./src/screens/WatchTab";
 import NotificationScreen from "./src/screens/NotificationTab";
 import ShortCutScreen from "./src/screens/ShortCutTab";
@@ -41,7 +41,15 @@ import AvatarOptions from "./src/screens/ProfileTab/AvatarOptions";
 import FindFriends from "./src/screens/ProfileTab/FindFriends";
 import FriendRequests from "./src/screens/ProfileTab/FriendRequests";
 
+import GroupSearch from './src/screens/Search/GroupSearch'
+import GroupCategory from './src/screens/GroupTab/GroupCategory'
+import GroupCategories from './src/screens/GroupTab/GroupCategories'
+import GroupProfile from './src/screens/GroupTab/group'
+import GroupScreen from './src/screens/GroupTab'
+
 import Search from "./src/screens/Search";
+
+axios.defaults.baseURL = BASE_URL
 
 const HomeTab = () => {
   // CameraRoll.getPhotos({
@@ -68,7 +76,7 @@ const HomeTab = () => {
 const GroupTab = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Group" component={GroupScreen} />
+      <Stack.Screen name="GroupScreen" component={GroupScreen} />
     </Stack.Navigator>
   );
 };
@@ -82,7 +90,7 @@ const WatchScreenWithIsFocused = (
 const WatchTab = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Watch" component={WatchScreenWithIsFocused} />
+      <Stack.Screen name="WatchScreen" component={WatchScreenWithIsFocused} />
     </Stack.Navigator>
   );
 };
@@ -90,7 +98,7 @@ const WatchTab = () => {
 const ProfileTab = () => {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
-			<Stack.Screen name="Profile" component={ProfileScreen} />
+			<Stack.Screen name="ProfileScreen" component={ProfileScreen} />
 		</Stack.Navigator>
 	)
 }
@@ -98,7 +106,7 @@ const ProfileTab = () => {
 const NotificationTab = () => {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
-			<Stack.Screen name="Notification" component={NotificationScreen} />
+			<Stack.Screen name="NotificationScreen" component={NotificationScreen} />
 		</Stack.Navigator>
 	)
 }
@@ -208,24 +216,24 @@ function App() {
 
 
 
-					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="ProfilePostOptions" component={ProfilePostOptions} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="EditPublicInfo" component={EditPublicInfo} />
+					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="ProfilePostOptions" component={ProfilePostOptions} />
+					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="EditPublicInfo" component={EditPublicInfo} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="FullFriends" component={FullFriends} />
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="FriendOptions" component={FriendOptions} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="FindFriends" component={FindFriends} />
 					<rootStack.Screen options={{ gestureEnabled: false }} name="FriendRequests" component={FriendRequests} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="ProfileSetting" component={ProfileSetting} />
+					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="ProfileSetting" component={ProfileSetting} /> */}
 					<rootStack.Screen options={{ gestureEnabled: false }} name="ProfileX" component={ProfileX} />
-					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="AvatarOptions" component={AvatarOptions} />
+					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="AvatarOptions" component={AvatarOptions} />
 
-					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="NotificationOptions" component={NotificationOptions} />
+					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="NotificationOptions" component={NotificationOptions} /> */}
 
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupCategory" component={GroupCategory} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupCategories" component={GroupCategories} />
-					<rootStack.Screen options={{ gestureEnabled: false }} name="GroupSearch" component={GroupSearch} />
+					{/* <rootStack.Screen options={{ gestureEnabled: false }} name="GroupSearch" component={GroupSearch} /> */}
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupProfile" component={GroupProfile} />
 
-					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="CommentsPopUp" component={CommentsPopUp} />
+					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="CommentsPopUp" component={CommentsPopUp} />
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="SharePost" component={SharePost} />
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="PostOptions" component={PostOptions} />
 					<rootStack.Screen options={{ gestureEnabled: false }} name="FullPostTool" component={FullPostTool} />
