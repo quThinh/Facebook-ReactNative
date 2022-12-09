@@ -24,6 +24,8 @@ const rootStack = createStackNavigator();
 
 import { BASE_URL, STATUSBAR_HEIGHT } from "./constants";
 
+import { FullPostTool, CheckIn, PhotoUploader, LiveStream } from './src/screens/PostTools/'
+
 import HomeScreen from "./src/screens/HomeScreen";
 import WatchScreen from "./src/screens/WatchTab";
 
@@ -32,6 +34,7 @@ import Comments from "./src/screens/Comments";
 import CommentsPopUp from './src/screens/CommentsPopUp'
 import PostDetail from './src/screens/PostDetail'
 import SharePost from './src/screens/SharePost'
+import PostOptions from './src/screens/PostOptions'
 import StoryDetailScreen from './src/screens/StoryDetail'
 
 import NotificationScreen from "./src/screens/NotificationTab";
@@ -246,11 +249,11 @@ function App() {
 
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="CommentsPopUp" component={CommentsPopUp} />
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="SharePost" component={SharePost} />
-					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="PostOptions" component={PostOptions} />
-					<rootStack.Screen options={{ gestureEnabled: false }} name="FullPostTool" component={FullPostTool} />
+					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="PostOptions" component={PostOptions} />
+					{/* <rootStack.Screen options={{ gestureEnabled: false }} name="FullPostTool" component={FullPostTool} /> */}
 					<rootStack.Screen name="CheckIn" component={CheckIn} />
-					<rootStack.Screen name="PhotoUploader" component={PhotoUploader} />
-					<rootStack.Screen name="LiveStream" component={LiveStream} /> */}
+					{/* <rootStack.Screen name="PhotoUploader" component={PhotoUploader} /> */}
+					<rootStack.Screen name="LiveStream" component={LiveStream} />
         </rootStack.Navigator>
       </NavigationContainer>
     </Provider>

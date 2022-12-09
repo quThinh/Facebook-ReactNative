@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { FetchPostsRequest } from "../../actions/postsAction";
-// import { LoginRequest } from "../../actions/userActions";
+import { LoginRequest } from "../../actions/userActions";
 import {
   StyleSheet,
   Text,
@@ -21,27 +21,25 @@ class Home extends Component {
     super(props);
   }
   componentDidMount() {
-    const { fetchPosts } = this.props;
+    const { fetchPosts, postLogin } = this.props;
     fetchPosts();
-    // postLogin();
+    postLogin();
   }
   render() {
     const { navigation } = this.props;
     const { posts } = this.props;
-    if (posts?.length === 0) return <View></View>;
+    if (posts.length === 0) return <View></View>;
     return (
       <View>
         <ScrollView bounces={false} style={styles.listContainter}>
           <PostTool></PostTool>
           <Stories></Stories>
-          {posts
-            ? posts?.map((item, index) => (
-                <View key={index}>
-                  {index === 1 && <RecommendFriends></RecommendFriends>}
-                  <Item item={item} key={index}></Item>
-                </View>
-              ))
-            : null}
+          {posts.map((item, index) => (
+            <View key={index}>
+              {index === 1 && <RecommendFriends></RecommendFriends>}
+              <Item item={item} key={index}></Item>
+            </View>
+          ))}
         </ScrollView>
       </View>
     );
@@ -50,7 +48,7 @@ class Home extends Component {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     fetchPosts: () => dispatch(FetchPostsRequest()),
-    // postLogin: () => dispatch(LoginRequest("vucms", "vucms")),
+    postLogin: () => dispatch(LoginRequest("vucms", "vucms")),
   };
 };
 const mapStateToProps = (state) => {

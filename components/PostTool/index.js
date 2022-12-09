@@ -7,9 +7,9 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-// import { connect } from 'react-redux'
+import { connect } from "react-redux";
 import FontAweSome5 from "react-native-vector-icons/FontAwesome5";
-// import * as navigation from '../../rootNavigation'
+import * as navigation from "../../rootNavigation";
 class index extends Component {
   constructor(props) {
     super(props);
@@ -17,29 +17,29 @@ class index extends Component {
       inputBgColor: "#fff",
     };
   }
-  // onLiveStreamPressHandler() {
-  //     navigation.navigate('LiveStream')
-  // }
-  // onPhotoUploaderPressHandler() {
-  //     navigation.navigate('PhotoChooser')
-  // }
-  // onCheckInPressHandler() {
-  //     navigation.navigate('CheckIn')
-  // }
-  // onFullPostToolPressHandler() {
-  //     navigation.navigate('FullPostTool')
-  // }
-  // onPressPostToAnyOneHandler() {
-  //     const { userX, page } = this.props
-  //     navigation.navigate('FullPostTool', {
-  //         isPostToAnyOne: true,
-  //         userX: userX || page
-  //     })
-  // }
+  onLiveStreamPressHandler() {
+    navigation.navigate("LiveStream");
+  }
+  onPhotoUploaderPressHandler() {
+    navigation.navigate("PhotoChooser");
+  }
+  onCheckInPressHandler() {
+    navigation.navigate("CheckIn");
+  }
+  onFullPostToolPressHandler() {
+    navigation.navigate("FullPostTool");
+  }
+  onPressPostToAnyOneHandler() {
+    const { userX, page } = this.props;
+    navigation.navigate("FullPostTool", {
+      isPostToAnyOne: true,
+      userX: userX || page,
+    });
+  }
 
-  // onPressSharePhotoToAnyOne() {
-  //     navigation.navigate('PhotoChooser')
-  // }
+  onPressSharePhotoToAnyOne() {
+    navigation.navigate("PhotoChooser");
+  }
   render() {
     const { user, isWriteToAnyOne, userX, isWriteToPage, page } = this.props;
     return (
@@ -50,11 +50,18 @@ class index extends Component {
             style={styles.userAvatarWrapper}
           >
             <Image
-              source={{ uri: process.env.IMAGE_TEST }}
+              source={{ uri: user.avatar_url }}
               style={styles.userAvatar}
             ></Image>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.postInputWrapper}>
+          <TouchableOpacity
+            onPress={
+              isWriteToAnyOne
+                ? this.onPressPostToAnyOneHandler.bind(this)
+                : this.onFullPostToolPressHandler
+            }
+            style={styles.postInputWrapper}
+          >
             <View
               style={{
                 ...styles.postInput,
@@ -72,6 +79,7 @@ class index extends Component {
         <View style={styles.postOptionsWrapper}>
           {!isWriteToAnyOne && !isWriteToPage && (
             <TouchableOpacity
+              onPress={this.onLiveStreamPressHandler}
               activeOpacity={0.5}
               style={styles.postOptionItemWrapper}
             >
@@ -87,6 +95,11 @@ class index extends Component {
             </TouchableOpacity>
           )}
           <TouchableOpacity
+            onPress={
+              isWriteToAnyOne || isWriteToPage
+                ? this.onPressPostToAnyOneHandler.bind(this)
+                : this.onPhotoUploaderPressHandler
+            }
             activeOpacity={0.5}
             style={styles.postOptionItemWrapper}
           >
@@ -108,6 +121,11 @@ class index extends Component {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={
+              isWriteToAnyOne || isWriteToPage
+                ? this.onPressSharePhotoToAnyOne.bind(this)
+                : this.onCheckInPressHandler
+            }
             activeOpacity={0.5}
             style={styles.postOptionItemWrapper}
           >
@@ -135,8 +153,7 @@ const mapStateToProps = (state) => {
     user: state.user.user,
   };
 };
-// export default connect(mapStateToProps, null)(index)
-export default index;
+export default connect(mapStateToProps, null)(index);
 const styles = StyleSheet.create({
   container: {
     borderTopColor: "#ddd",
