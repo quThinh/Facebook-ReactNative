@@ -10,7 +10,6 @@ import {
 import ScaledImage from "../ScaledImage";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import * as navigation from "../../rootNavigation";
-import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5";
 import { permission } from "../../constants";
 import { connect } from "react-redux";
 
@@ -62,7 +61,9 @@ class Item extends Component {
             ></Image>
             <View style={styles.infoWrapper}>
               <View style={styles.namesWrapper}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={this.onPressProfileHandler.bind(this, item.user?.id)}
+                >
                   <Text style={{ fontSize: 16, fontWeight: "500" }}>
                     {item.user?.name}
                   </Text>
@@ -74,25 +75,30 @@ class Item extends Component {
                 </Text>
                 <Text style={{ fontSize: 16, marginHorizontal: 5 }}>·</Text>
                 {item.permission == permission.PUBLIC && (
-                  <FontAwesome5Icon color="#333" name="globe-asia" />
+                  <Icon color="#333" name="globe-asia" />
                 )}
                 {item.permission == permission.SETTING && (
-                  <FontAwesome5Icon color="#333" name="cogs" />
+                  <Icon color="#333" name="cogs" />
                 )}
                 {item.permission == permission.GROUP && (
-                  <FontAwesome5Icon color="#333" name="newspaper" />
+                  <Icon color="#333" name="newspaper" />
                 )}
               </View>
             </View>
           </View>
-          <TouchableOpacity style={{ width: 25, alignItems: "center" }}>
+          <TouchableOpacity
+            onPress={this.onPressPostOptionsIconHandler.bind(this)}
+            style={{ width: 25, alignItems: "center" }}
+          >
             <Icon name="ellipsis-h" color="#000"></Icon>
           </TouchableOpacity>
         </View>
         <View style={styles.contentContainer}>
           <Text style={styles.paragraph}>{item.content}</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={this.onPressPostImageHandler.bind(this, item.id)}
+        >
           <View style={styles.imageContainer}>
             <ScaledImage height={300} source={item.image}></ScaledImage>
           </View>
@@ -147,7 +153,7 @@ class Item extends Component {
               style={styles.reactionIcon}
             ></Icon>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this.onPressHandle.bind(this)}>
             <Icon
               lineBreakMode={false}
               name="comment-alt"
@@ -161,7 +167,10 @@ class Item extends Component {
               </Text>
             </Icon>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.shareIcon}>
+          <TouchableOpacity
+            onPress={this.onPressShareHandler.bind(this)}
+            style={styles.shareIcon}
+          >
             <Icon name="share-alt" color="gray">
               <Text style={{ fontSize: 12, textAlignVertical: "center" }}>
                 {" "}
@@ -172,11 +181,14 @@ class Item extends Component {
         </View>
         <View style={styles.commentContainer}>
           <Image
-            source={{ uri: process.env.IMAGE_TEST }}
+            source={{ uri: user.avatar_url }}
             style={styles.commentAvatar}
           ></Image>
           <View style={styles.commentInput}>
-            <TouchableOpacity style={styles.commentInputWrapper}>
+            <TouchableOpacity
+              onPress={this.onPressHandle.bind(this)}
+              style={styles.commentInputWrapper}
+            >
               <Text>Comment...</Text>
             </TouchableOpacity>
           </View>
@@ -197,11 +209,7 @@ const mapStateToProps = (state) => {
     user: state.user.user,
   };
 };
-const mapDispatchToProps = (dispatch, props) => {
-  return {};
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Item);
-
+export default connect(mapStateToProps, null)(Item);
 const screenWidth = Math.round(Dimensions.get("window").width);
 const styles = StyleSheet.create({
   customListView: {

@@ -30,7 +30,7 @@ class Home extends Component {
     const { posts } = this.props;
     if (posts?.length === 0) return <View></View>;
     return (
-      <View style={styles.top}>
+      <View>
         <ScrollView bounces={false} style={styles.listContainter}>
           <PostTool></PostTool>
           <Stories></Stories>
@@ -61,9 +61,6 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 const screenHeight = Math.round(Dimensions.get("window").height);
 const styles = StyleSheet.create({
-  top: {
-    marginTop: 100,
-  },
   container: {
     flex: 1,
     flexDirection: "column",
