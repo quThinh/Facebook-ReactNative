@@ -36,6 +36,7 @@ class PostDetailModal extends Component {
     Animated.timing(this.optionBottom, {
       toValue: 0,
       duration: 300,
+      useNativeDriver: false,
     }).start();
   }
   onPressProfileLinkHandler() {}
@@ -56,6 +57,7 @@ class PostDetailModal extends Component {
     Animated.timing(this.optionBottom, {
       toValue: -screenHeight,
       duration: 400,
+      useNativeDriver: false,
     }).start();
   }
   onPressReactionValueHandler() {}

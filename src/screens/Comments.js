@@ -51,6 +51,7 @@ export default class extends Component {
         Animated.timing(this._containerTop, {
           toValue: 0,
           duration: 200,
+          useNativeDriver: false,
         }).start();
       } else {
         navigation.goBack();

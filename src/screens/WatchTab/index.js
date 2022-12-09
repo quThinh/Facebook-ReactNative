@@ -112,7 +112,7 @@ class index extends Component {
                 ))}
               </ExTouchableOpacity>
             </View>
-            <WatchList></WatchList>
+            {/* <WatchList></WatchList> */}
           </ScrollView>
         </View>
       </View>

@@ -350,9 +350,7 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = (dispatch, props) => {
-  return {
-    fetchNotifications: () => dispatch(FetchNotificationsRequest()),
-  };
+  return {};
 };
 export default connect(mapStateToProps, mapDispatchToProps)(index);
 const styles = StyleSheet.create({

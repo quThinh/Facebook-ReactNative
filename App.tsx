@@ -4,7 +4,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ThemeProvider } from "react-native-elements";
 import { Provider } from "react-redux";
 import store from "./store";
-import { Platform } from "react-native";
+import { Platform, LogBox } from "react-native";
 import { navigationRef } from "./rootNavigation";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import axios from 'axios'
@@ -26,11 +26,16 @@ import { BASE_URL, STATUSBAR_HEIGHT } from "./constants";
 
 import HomeScreen from "./src/screens/HomeScreen";
 import WatchScreen from "./src/screens/WatchTab";
-import NotificationScreen from "./src/screens/NotificationTab";
+
 import ShortCutScreen from "./src/screens/ShortCutTab";
 import Comments from "./src/screens/Comments";
+import CommentsPopUp from './src/screens/CommentsPopUp'
 import PostDetail from './src/screens/PostDetail'
+import SharePost from './src/screens/SharePost'
 import StoryDetailScreen from './src/screens/StoryDetail'
+
+import NotificationScreen from "./src/screens/NotificationTab";
+import NotificationOptions from './src/screens/NotificationTab/NotificationOptions'
 
 import ProfileScreen from "./src/screens/ProfileTab";
 import ProfileX from "./src/screens/ProfileTab/ProfileX";
@@ -50,6 +55,10 @@ import GroupProfile from './src/screens/GroupTab/group'
 import GroupScreen from './src/screens/GroupTab'
 
 import Search from "./src/screens/Search";
+
+LogBox.ignoreLogs([
+  'Non-serializable values were found in the navigation state',
+]);
 
 axios.defaults.baseURL = BASE_URL
 
@@ -219,25 +228,25 @@ function App() {
 
 
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="ProfilePostOptions" component={ProfilePostOptions} />
-					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="EditPublicInfo" component={EditPublicInfo} />
+					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="EditPublicInfo" component={EditPublicInfo} /> */}
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="FullFriends" component={FullFriends} />
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="FriendOptions" component={FriendOptions} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="FindFriends" component={FindFriends} />
 					<rootStack.Screen options={{ gestureEnabled: false }} name="FriendRequests" component={FriendRequests} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="ProfileSetting" component={ProfileSetting} /> */}
+					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="ProfileSetting" component={ProfileSetting} /> */}
 					<rootStack.Screen options={{ gestureEnabled: false }} name="ProfileX" component={ProfileX} />
-					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="AvatarOptions" component={AvatarOptions} />
+					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="AvatarOptions" component={AvatarOptions} /> */}
 
-					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="NotificationOptions" component={NotificationOptions} /> */}
+					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="NotificationOptions" component={NotificationOptions} />
 
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupCategory" component={GroupCategory} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupCategories" component={GroupCategories} />
-					{/* <rootStack.Screen options={{ gestureEnabled: false }} name="GroupSearch" component={GroupSearch} /> */}
+					<rootStack.Screen options={{ gestureEnabled: false }} name="GroupSearch" component={GroupSearch} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupProfile" component={GroupProfile} />
 
-					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="CommentsPopUp" component={CommentsPopUp} />
+					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="CommentsPopUp" component={CommentsPopUp} />
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="SharePost" component={SharePost} />
-					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="PostOptions" component={PostOptions} />
+					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="PostOptions" component={PostOptions} />
 					<rootStack.Screen options={{ gestureEnabled: false }} name="FullPostTool" component={FullPostTool} />
 					<rootStack.Screen name="CheckIn" component={CheckIn} />
 					<rootStack.Screen name="PhotoUploader" component={PhotoUploader} />
