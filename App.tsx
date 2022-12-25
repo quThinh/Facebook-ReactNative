@@ -58,6 +58,7 @@ import GroupProfile from './src/screens/GroupTab/group'
 import GroupScreen from './src/screens/GroupTab'
 
 import Search from "./src/screens/Search";
+import Result from './src/screens/Search/Result'
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -218,11 +219,11 @@ function App() {
 					<rootStack.Screen options={{ gestureEnabled: true }} name="PagePostDetail" component={PagePostDetail} />
 
 					<rootStack.Screen options={{ gestureEnabled: false }} name="PhotoChooser" component={PhotoChooser} />
-					<rootStack.Screen options={{ gestureEnabled: false }} name="Camera" component={Camera} />
+					<rootStack.Screen options={{ gestureEnabled: false }} name="Camera" component={Camera} /> */}
 					<rootStack.Screen options={{ gestureEnabled: false }} name="Search" component={Search} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="Result" component={Result} />
 
-					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="WatchOptions" component={WatchOptions} />
+					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="WatchOptions" component={WatchOptions} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="WatchSearch" component={WatchSearch} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="SeenVideos" component={SeenVideos} />
 					<rootStack.Screen options={{ gestureEnabled: true }} name="WatchDetail" component={WatchDetail} />

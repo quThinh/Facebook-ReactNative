@@ -134,7 +134,7 @@ export default class ProfilePostOptions extends Component {
             </View>
           </TouchableOpacity>
         </View>
-        <Toast
+        {/* <Toast
           visible={this.state.isVisible}
           position={Toast.positions.BOTTOM}
           shadow={false}
@@ -142,7 +142,7 @@ export default class ProfilePostOptions extends Component {
           hideOnPress={true}
         >
           Copied to clipboard
-        </Toast>
+        </Toast> */}
       </View>
     );
   }

@@ -173,7 +173,7 @@ export default class PostOptions extends Component {
             </View>
           </TouchableOpacity>
         </View>
-        <Toast
+        {/* <Toast
           visible={this.state.isVisible}
           position={50}
           shadow={false}
@@ -181,7 +181,7 @@ export default class PostOptions extends Component {
           hideOnPress={true}
         >
           Copied to clipboard
-        </Toast>
+        </Toast> */}
       </View>
     );
   }
