@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderBottomWidth: 0.3,
     borderBottomColor: "#ddd",
-    paddingTop: STATUSBAR_HEIGHT,
+    paddingTop: STATUSBAR_HEIGHT + 5,
   },
   btnBack: {
     width: 30,

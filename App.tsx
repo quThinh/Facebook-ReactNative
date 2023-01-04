@@ -28,6 +28,7 @@ import { FullPostTool, CheckIn, PhotoUploader, LiveStream } from './src/screens/
 
 import HomeScreen from "./src/screens/HomeScreen";
 import WatchScreen from "./src/screens/WatchTab";
+import WatchSearch from './src/screens/Search/WatchSearch'
 
 import ShortCutScreen from "./src/screens/ShortCutTab";
 import Comments from "./src/screens/Comments";
@@ -223,9 +224,9 @@ function App() {
 					<rootStack.Screen options={{ gestureEnabled: false }} name="Search" component={Search} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="Result" component={Result} />
 
-					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="WatchOptions" component={WatchOptions} />
+					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="WatchOptions" component={WatchOptions} /> */}
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="WatchSearch" component={WatchSearch} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="SeenVideos" component={SeenVideos} />
+					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="SeenVideos" component={SeenVideos} />
 					<rootStack.Screen options={{ gestureEnabled: true }} name="WatchDetail" component={WatchDetail} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="WatchDetailList" component={WatchDetailList} /> */}
 
@@ -237,9 +238,9 @@ function App() {
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="FriendOptions" component={FriendOptions} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="FindFriends" component={FindFriends} />
 					<rootStack.Screen options={{ gestureEnabled: false }} name="FriendRequests" component={FriendRequests} />
-					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="ProfileSetting" component={ProfileSetting} /> */}
+					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="ProfileSetting" component={ProfileSetting} />
 					<rootStack.Screen options={{ gestureEnabled: false }} name="ProfileX" component={ProfileX} />
-					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="AvatarOptions" component={AvatarOptions} /> */}
+					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="AvatarOptions" component={AvatarOptions} />
 
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="NotificationOptions" component={NotificationOptions} />
 
