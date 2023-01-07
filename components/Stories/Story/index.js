@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import { View, Text, Image, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
-// import * as navigation from '../../../rootNavigation'
+import * as navigation from '../../../rootNavigation'
 import { TabActions } from '@react-navigation/native';
 export default class index extends Component {
     constructor(props) {
         super(props)
     }
-    // onPressHandle() {
-    //     console.log("click")
-    //     const { story, position } = this.props
-    //     navigation.navigate("StoryDetail", {
-    //         position: position
-    //     })
-    // }
+    onPressHandle() {
+        console.log("click")
+        const { story, position } = this.props
+        navigation.navigate("StoryDetail", {
+            position: position
+        })
+    }
     render() {
         const { story } = this.props
         let displayImagePosition = 0
@@ -23,9 +23,9 @@ export default class index extends Component {
         const displayImage = story.images[displayImagePosition]
         return (
             <View style={styles.container}>
-                <TouchableOpacity activeOpacity={0.8} >
+                <TouchableOpacity activeOpacity={0.8} onPress={this.onPressHandle.bind(this)}>
                     <ImageBackground imageStyle={{ resizeMode: 'cover' }} style={styles.imageBackground} source={{ uri: displayImage.url }}>
-                        <Image style={styles.avatar} source={{ uri: process.env.IMAGE_TEST }} />
+                        <Image style={styles.avatar} source={{ uri: "https://www.tubefilter.com/wp-content/uploads/2019/11/dobrik-people.jpg" }} />
                     </ImageBackground>
                     <View style={styles.nameWrapper}>
                         <Text style={styles.name}>{story.user.name}</Text>

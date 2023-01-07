@@ -11,7 +11,7 @@ export default class StoryAdder extends Component {
         return (
             <View style={styles.container}>
                 <TouchableOpacity activeOpacity={0.8}>
-                    <ImageBackground imageStyle={{ resizeMode: 'cover' }} style={styles.imageBackground} source={{ uri: process.env.IMAGE_TEST }}>
+                    <ImageBackground imageStyle={{ resizeMode: 'cover' }} style={styles.imageBackground} source={{ uri: "https://www.tubefilter.com/wp-content/uploads/2019/11/dobrik-people.jpg" }}>
                         <View style={styles.iconWrapper}>
                             <Icon name='plus' size={24} color='#318bfb' />
                         </View>
