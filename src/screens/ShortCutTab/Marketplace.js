@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, ScrollView, TouchableOpacity, Image } from 'react-native'
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
-import { STATUSBAR_HEIGHT, SCREEN_HEIGHT, productTypes } from '../../constants'
+import { STATUSBAR_HEIGHT, SCREEN_HEIGHT, productTypes } from '../../../constants'
 import ExTouchableOpacity from '../../../components/ExTouchableOpacity'
 import { navigation } from '../../../rootNavigation'
 import { connect } from 'react-redux'

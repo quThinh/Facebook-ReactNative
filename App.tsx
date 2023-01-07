@@ -61,6 +61,14 @@ import GroupScreen from './src/screens/GroupTab'
 import Search from "./src/screens/Search";
 import Result from './src/screens/Search/Result'
 
+import Marketplace from './src/screens/ShortCutTab/Marketplace';
+import MarketplaceSearch from './src/screens/Search/MarketplaceSearch';
+import MarketplaceProductDetail from './src/screens/ShortCutTab/MarketplaceProductDetail'
+import MarketplaceCategory from './src/screens/ShortCutTab/MarketplaceCategory'
+import MarketplaceArea from './src/screens/ShortCutTab/MarketplaceArea'
+
+
+
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
 ]);
@@ -210,13 +218,13 @@ function App() {
           <rootStack.Screen name="StoryDetail" component={StoryDetailScreen} />
 					<rootStack.Screen name="PostDetail" component={PostDetail} />
 
-					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="Marketplace" component={Marketplace} />
+					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="Marketplace" component={Marketplace} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="MarketplaceSearch" component={MarketplaceSearch} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="MarketplaceProductDetail" component={MarketplaceProductDetail} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="MarketplaceCategory" component={MarketplaceCategory} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="MarketplaceArea" component={MarketplaceArea} />
 
-					<rootStack.Screen options={{ gestureEnabled: false }} name="Page" component={Page} />
+					{/* <rootStack.Screen options={{ gestureEnabled: false }} name="Page" component={Page} />
 					<rootStack.Screen options={{ gestureEnabled: true }} name="PagePostDetail" component={PagePostDetail} />
 
 					<rootStack.Screen options={{ gestureEnabled: false }} name="PhotoChooser" component={PhotoChooser} />

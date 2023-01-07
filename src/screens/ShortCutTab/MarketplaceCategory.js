@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native'
-import { STATUSBAR_HEIGHT, SCREEN_WIDTH, productTypes, SCREEN_HEIGHT } from '../../constants'
+import { STATUSBAR_HEIGHT, SCREEN_WIDTH, productTypes, SCREEN_HEIGHT } from '../../../constants'
 import ExTouchableOpacity from '../../../components/ExTouchableOpacity'
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
 import { navigation } from '../../../rootNavigation'
