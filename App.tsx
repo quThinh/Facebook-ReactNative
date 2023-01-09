@@ -67,7 +67,7 @@ import MarketplaceProductDetail from './src/screens/ShortCutTab/MarketplaceProdu
 import MarketplaceCategory from './src/screens/ShortCutTab/MarketplaceCategory'
 import MarketplaceArea from './src/screens/ShortCutTab/MarketplaceArea'
 
-
+import Page from './src/screens/Pages'
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -224,8 +224,8 @@ function App() {
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="MarketplaceCategory" component={MarketplaceCategory} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="MarketplaceArea" component={MarketplaceArea} />
 
-					{/* <rootStack.Screen options={{ gestureEnabled: false }} name="Page" component={Page} />
-					<rootStack.Screen options={{ gestureEnabled: true }} name="PagePostDetail" component={PagePostDetail} />
+					<rootStack.Screen options={{ gestureEnabled: false }} name="Page" component={Page} />
+					{/* <rootStack.Screen options={{ gestureEnabled: true }} name="PagePostDetail" component={PagePostDetail} />
 
 					<rootStack.Screen options={{ gestureEnabled: false }} name="PhotoChooser" component={PhotoChooser} />
 					<rootStack.Screen options={{ gestureEnabled: false }} name="Camera" component={Camera} /> */}

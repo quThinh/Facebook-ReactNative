@@ -1,6 +1,6 @@
 import { pageDetailActions } from '../constants'
-import * as MediaLibrary from 'expo-media-library';
-import * as Permissions from 'expo-permissions';
+// import * as MediaLibrary from 'expo-media-library';
+// import * as Permissions from 'expo-permissions';
 import axios from 'axios'
 import { Alert } from 'react-native';
 
