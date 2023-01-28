@@ -27,8 +27,8 @@ import { BASE_URL, STATUSBAR_HEIGHT } from "./constants";
 import { FullPostTool, CheckIn, PhotoUploader, LiveStream } from './src/screens/PostTools/'
 
 import HomeScreen from "./src/screens/HomeScreen";
-import WatchScreen from "./src/screens/WatchTab";
-import WatchSearch from './src/screens/Search/WatchSearch'
+// import WatchScreen from "./src/screens/WatchTab";
+// import WatchSearch from './src/screens/Search/WatchSearch'
 
 import ShortCutScreen from "./src/screens/ShortCutTab";
 import Comments from "./src/screens/Comments";
@@ -60,12 +60,6 @@ import GroupScreen from './src/screens/GroupTab'
 
 import Search from "./src/screens/Search";
 import Result from './src/screens/Search/Result'
-
-import Marketplace from './src/screens/ShortCutTab/Marketplace';
-import MarketplaceSearch from './src/screens/Search/MarketplaceSearch';
-import MarketplaceProductDetail from './src/screens/ShortCutTab/MarketplaceProductDetail'
-import MarketplaceCategory from './src/screens/ShortCutTab/MarketplaceCategory'
-import MarketplaceArea from './src/screens/ShortCutTab/MarketplaceArea'
 
 import Page from './src/screens/Pages'
 
@@ -104,20 +98,20 @@ const GroupTab = () => {
     </Stack.Navigator>
   );
 };
-const WatchScreenWithIsFocused = (
-  props: JSX.IntrinsicAttributes & { [x: string]: any }
-) => {
-  const isFocused = useIsFocused();
-  return <WatchScreen {...props} isFocused={isFocused}></WatchScreen>;
-};
+// const WatchScreenWithIsFocused = (
+//   props: JSX.IntrinsicAttributes & { [x: string]: any }
+// ) => {
+//   const isFocused = useIsFocused();
+//   return <WatchScreen {...props} isFocused={isFocused}></WatchScreen>;
+// };
 
-const WatchTab = () => {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="WatchScreen" component={WatchScreenWithIsFocused} />
-    </Stack.Navigator>
-  );
-};
+// const WatchTab = () => {
+//   return (
+//     <Stack.Navigator screenOptions={{ headerShown: false }}>
+//       <Stack.Screen name="WatchScreen" component={WatchScreenWithIsFocused} />
+//     </Stack.Navigator>
+//   );
+// };
 
 const ProfileTab = () => {
 	return (
@@ -177,9 +171,9 @@ const MainTab = () => {
         name="Group"
         component={GroupTab}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='video' size={20} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
-				name="Watch" component={WatchTab} />
+				name="Watch" component={WatchTab} /> */}
 			<Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='user-circle' size={22} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
 				name="Profile" component={ProfileTab} />
@@ -218,11 +212,7 @@ function App() {
           <rootStack.Screen name="StoryDetail" component={StoryDetailScreen} />
 					<rootStack.Screen name="PostDetail" component={PostDetail} />
 
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="Marketplace" component={Marketplace} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="MarketplaceSearch" component={MarketplaceSearch} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="MarketplaceProductDetail" component={MarketplaceProductDetail} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="MarketplaceCategory" component={MarketplaceCategory} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="MarketplaceArea" component={MarketplaceArea} />
+		
 
 					<rootStack.Screen options={{ gestureEnabled: false }} name="Page" component={Page} />
 					{/* <rootStack.Screen options={{ gestureEnabled: true }} name="PagePostDetail" component={PagePostDetail} />
@@ -231,14 +221,6 @@ function App() {
 					<rootStack.Screen options={{ gestureEnabled: false }} name="Camera" component={Camera} /> */}
 					<rootStack.Screen options={{ gestureEnabled: false }} name="Search" component={Search} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="Result" component={Result} />
-
-					{/* <rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="WatchOptions" component={WatchOptions} /> */}
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="WatchSearch" component={WatchSearch} />
-					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="SeenVideos" component={SeenVideos} />
-					<rootStack.Screen options={{ gestureEnabled: true }} name="WatchDetail" component={WatchDetail} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="WatchDetailList" component={WatchDetailList} /> */}
-
-
 
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="ProfilePostOptions" component={ProfilePostOptions} />
 					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="EditPublicInfo" component={EditPublicInfo} /> */}
@@ -260,7 +242,7 @@ function App() {
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="CommentsPopUp" component={CommentsPopUp} />
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="SharePost" component={SharePost} />
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="PostOptions" component={PostOptions} />
-					{/* <rootStack.Screen options={{ gestureEnabled: false }} name="FullPostTool" component={FullPostTool} /> */}
+					<rootStack.Screen options={{ gestureEnabled: false }} name="FullPostTool" component={FullPostTool} />
 					<rootStack.Screen name="CheckIn" component={CheckIn} />
 					{/* <rootStack.Screen name="PhotoUploader" component={PhotoUploader} /> */}
 					<rootStack.Screen name="LiveStream" component={LiveStream} />

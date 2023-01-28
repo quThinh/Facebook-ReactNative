@@ -65,16 +65,19 @@ class FullPostTool extends Component {
       Animated.timing(this._scaleTransformToggle, {
         toValue: 0,
         duration: 100,
+        useNativeDriver: false,
       }).start(() => {
         this._toggleZindexValue.setValue(2);
         Animated.timing(this._degTransformToggle, {
           toValue: 0,
           duration: 200,
+          useNativeDriver: false,
         }).start(() => {});
       });
       Animated.spring(this._bgColorListWidth, {
         toValue: screenWidth - 60,
         duration: 300,
+        useNativeDriver: false,
       }).start(() => {
         this._isShowBgColors = true;
       });
@@ -113,6 +116,7 @@ class FullPostTool extends Component {
     Animated.timing(this._editorWrapperHeight, {
       toValue: height + 20,
       duration: 0,
+      useNativeDriver: false,
     }).start();
   }
   onGestureEventHandler({ nativeEvent }) {
