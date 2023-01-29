@@ -77,23 +77,6 @@ class index extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.postOptionsWrapper}>
-          {!isWriteToAnyOne && !isWriteToPage && (
-            <TouchableOpacity
-              onPress={this.onLiveStreamPressHandler}
-              activeOpacity={0.5}
-              style={styles.postOptionItemWrapper}
-            >
-              <View style={styles.postOptionItem}>
-                <FontAweSome5
-                  style={styles.postOptionIcon}
-                  name="video"
-                  color="red"
-                  size={16}
-                />
-                <Text>Live Stream</Text>
-              </View>
-            </TouchableOpacity>
-          )}
           <TouchableOpacity
             onPress={
               isWriteToAnyOne || isWriteToPage

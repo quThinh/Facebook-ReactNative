@@ -23,6 +23,7 @@ import {
 import { connect } from "react-redux";
 import { FetchBgColorsRequest } from "../../../actions/bgColorsActions";
 import * as navigation from "../../../rootNavigation";
+import { STATUSBAR_HEIGHT } from "../../../constants";
 class FullPostTool extends Component {
   constructor(props) {
     super(props);
@@ -135,16 +136,19 @@ class FullPostTool extends Component {
         Animated.spring(this._distanceTopOption, {
           toValue: 0,
           duration: 200,
+          useNativeDriver: false,
         }).start(() => (this._prevTranslatetionY = 0));
       } else if (Math.abs(translationY) > 150 && Math.abs(translationY) < 350) {
         Animated.spring(this._distanceTopOption, {
           toValue: 247.5,
           duration: 200,
+          useNativeDriver: false,
         }).start(() => (this._prevTranslatetionY = 247.5));
       } else {
         Animated.spring(this._distanceTopOption, {
           toValue: 600,
           duration: 200,
+          useNativeDriver: false,
         }).start(() => (this._prevTranslatetionY = 600));
       }
     }
@@ -160,16 +164,19 @@ class FullPostTool extends Component {
       Animated.timing(this._scaleTransformToggle, {
         toValue: 0,
         duration: 100,
+        useNativeDriver: false,
       }).start(() => {
         this._toggleZindexValue.setValue(2);
         Animated.timing(this._degTransformToggle, {
           toValue: 0,
           duration: 200,
+          useNativeDriver: false,
         }).start(() => {});
       });
       Animated.spring(this._bgColorListWidth, {
         toValue: screenWidth - 60,
         duration: 300,
+        useNativeDriver: false,
       }).start(() => {
         this._isShowBgColors = true;
       });
@@ -177,16 +184,19 @@ class FullPostTool extends Component {
       Animated.timing(this._degTransformToggle, {
         toValue: -90,
         duration: 100,
+        useNativeDriver: false,
       }).start(() => {
         this._toggleZindexValue.setValue(0);
         Animated.timing(this._scaleTransformToggle, {
           toValue: 1,
           duration: 200,
+          useNativeDriver: false,
         }).start(() => {});
       });
       Animated.timing(this._bgColorListWidth, {
         toValue: 0,
         duration: 300,
+        useNativeDriver: false,
       }).start(() => {
         this._isShowBgColors = false;
       });
@@ -198,16 +208,19 @@ class FullPostTool extends Component {
       Animated.spring(this._distanceTopOption, {
         toValue: 247.5,
         duration: 200,
+        useNativeDriver: false,
       }).start(() => (this._prevTranslatetionY = 247.5));
     } else if (this._prevTranslatetionY === 247.5) {
       Animated.spring(this._distanceTopOption, {
         toValue: 600,
         duration: 200,
+        useNativeDriver: false,
       }).start(() => (this._prevTranslatetionY = 600));
     } else {
       Animated.spring(this._distanceTopOption, {
         toValue: 247.5,
         duration: 200,
+        useNativeDriver: false,
       }).start(() => (this._prevTranslatetionY = 247.5));
     }
   }
@@ -689,6 +702,7 @@ const screenHeight = Math.round(Dimensions.get("window").height);
 const screenWidth = Math.round(Dimensions.get("window").width);
 const styles = StyleSheet.create({
   parentContainer: {
+    paddingTop: STATUSBAR_HEIGHT,
     height: screenHeight,
     position: "relative",
   },

@@ -37,6 +37,8 @@ import PostDetail from './src/screens/PostDetail'
 import SharePost from './src/screens/SharePost'
 import PostOptions from './src/screens/PostOptions'
 
+import PhotoChooser from './src/screens/PhotoChooser'
+
 import NotificationScreen from "./src/screens/NotificationTab";
 import NotificationOptions from './src/screens/NotificationTab/NotificationOptions'
 
@@ -213,15 +215,15 @@ function App() {
 		
 
 					<rootStack.Screen options={{ gestureEnabled: false }} name="Page" component={Page} />
-					{/* <rootStack.Screen options={{ gestureEnabled: true }} name="PagePostDetail" component={PagePostDetail} />
+					{/* <rootStack.Screen options={{ gestureEnabled: true }} name="PagePostDetail" component={PagePostDetail} /> */}
 
 					<rootStack.Screen options={{ gestureEnabled: false }} name="PhotoChooser" component={PhotoChooser} />
-					<rootStack.Screen options={{ gestureEnabled: false }} name="Camera" component={Camera} /> */}
+					{/* <rootStack.Screen options={{ gestureEnabled: false }} name="Camera" component={Camera} /> */}
 					<rootStack.Screen options={{ gestureEnabled: false }} name="Search" component={Search} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="Result" component={Result} />
 
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="ProfilePostOptions" component={ProfilePostOptions} />
-					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="EditPublicInfo" component={EditPublicInfo} /> */}
+					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="EditPublicInfo" component={EditPublicInfo} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="FullFriends" component={FullFriends} />
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="FriendOptions" component={FriendOptions} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="FindFriends" component={FindFriends} />
