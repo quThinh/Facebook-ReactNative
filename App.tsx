@@ -39,6 +39,8 @@ import PostOptions from './src/screens/PostOptions'
 
 import PhotoChooser from './src/screens/PhotoChooser'
 
+import Login from './src/screens/SignInScreen'
+
 import NotificationScreen from "./src/screens/NotificationTab";
 import NotificationOptions from './src/screens/NotificationTab/NotificationOptions'
 
@@ -170,9 +172,6 @@ const MainTab = () => {
         name="Group"
         component={GroupTab}
       />
-      {/* <Tab.Screen
-				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='video' size={20} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
-				name="Watch" component={WatchTab} /> */}
 			<Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='user-circle' size={22} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
 				name="Profile" component={ProfileTab} />
@@ -196,6 +195,7 @@ const MainTab = () => {
   );
 };
 function App() {
+  const isSignedIn = false
   const TransitionPreset =
     Platform.OS === "ios" ? TransitionPresets.ModalSlideFromBottomIOS : {};
   const navigationOptions: StackNavigationOptions = {
@@ -207,7 +207,10 @@ function App() {
     <Provider store={store}>
       <NavigationContainer ref={navigationRef}>
         <rootStack.Navigator screenOptions={navigationOptions}>
-          <rootStack.Screen component={MainTab} name="MainTab" />
+        {isSignedIn  ? (
+      // No token found, user isn't signed in
+      <>
+      <rootStack.Screen component={MainTab} name="MainTab" />
 					<rootStack.Screen name="PostDetail" component={PostDetail} />
 
 					<rootStack.Screen options={{ gestureEnabled: false }} name="PhotoChooser" component={PhotoChooser} />
@@ -239,6 +242,16 @@ function App() {
 					<rootStack.Screen name="CheckIn" component={CheckIn} />
 					{/* <rootStack.Screen name="PhotoUploader" component={PhotoUploader} /> */}
 					<rootStack.Screen name="LiveStream" component={LiveStream} />
+          </>
+      
+    ) : (
+      // User is signed in
+      <>
+      <Stack.Screen name="SignIn" component={Login} />
+      {/* <Stack.Screen name="SignUp" component={SignUpScreen} /> */}
+    </>
+    )}
+          
         </rootStack.Navigator>
       </NavigationContainer>
     </Provider>
