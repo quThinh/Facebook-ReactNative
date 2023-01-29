@@ -43,11 +43,6 @@ class index extends Component {
           userId: searching.user.id,
         });
         break;
-      case searchType.PAGE:
-        navigation.navigate("Page", {
-          pageId: searching.page.id,
-        });
-        break;
       case searchType.GROUP:
         navigation.navigate("GroupProfile", {
           id: searching.group.id,

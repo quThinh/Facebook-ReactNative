@@ -39,10 +39,6 @@ class index extends Component {
   onPressMarketplaceHandler() {
     navigation.navigate("Marketplace");
   }
-  onPressPageHandler() {
-    const { pageId } = this.props;
-    navigation.navigate("Page");
-  }
   onPressToggleShowHandler() {
     if (this.state.isShowMore) {
       Animated.timing(this._moreOptionsHeight, {
@@ -159,10 +155,7 @@ class index extends Component {
               <Text style={styles.name}>Past</Text>
             </View>
           </ExTouchableOpacity>
-          <ExTouchableOpacity
-            onPress={this.onPressPageHandler}
-            style={styles.btnOption}
-          >
+          <ExTouchableOpacity style={styles.btnOption}>
             <Image
               style={styles.icon}
               source={require("../../../assets/icons/article.png")}

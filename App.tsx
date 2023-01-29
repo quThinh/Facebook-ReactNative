@@ -62,8 +62,6 @@ import GroupScreen from './src/screens/GroupTab'
 import Search from "./src/screens/Search";
 import Result from './src/screens/Search/Result'
 
-import Page from './src/screens/Pages'
-
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
 ]);
@@ -211,11 +209,6 @@ function App() {
         <rootStack.Navigator screenOptions={navigationOptions}>
           <rootStack.Screen component={MainTab} name="MainTab" />
 					<rootStack.Screen name="PostDetail" component={PostDetail} />
-
-		
-
-					<rootStack.Screen options={{ gestureEnabled: false }} name="Page" component={Page} />
-					{/* <rootStack.Screen options={{ gestureEnabled: true }} name="PagePostDetail" component={PagePostDetail} /> */}
 
 					<rootStack.Screen options={{ gestureEnabled: false }} name="PhotoChooser" component={PhotoChooser} />
 					{/* <rootStack.Screen options={{ gestureEnabled: false }} name="Camera" component={Camera} /> */}
