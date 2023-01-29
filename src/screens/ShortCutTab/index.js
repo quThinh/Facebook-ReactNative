@@ -30,9 +30,6 @@ class index extends Component {
     const { friends } = this.props;
     navigation.navigate("FullFriends", { friends });
   }
-  onPressWatchVideoHandler() {
-    navigation.navigate("Watch");
-  }
   onPressGroupsHandler() {
     navigation.navigate("Group");
   }
@@ -44,7 +41,7 @@ class index extends Component {
   }
   onPressPageHandler() {
     const { pageId } = this.props;
-    navigation.navigate('Page');
+    navigation.navigate("Page");
   }
   onPressToggleShowHandler() {
     if (this.state.isShowMore) {
@@ -80,10 +77,7 @@ class index extends Component {
               <Text style={{ color: "#333" }}>View your profile page</Text>
             </View>
           </ExTouchableOpacity>
-          <ExTouchableOpacity
-            onPress={this.onPressWatchVideoHandler}
-            style={styles.btnOption}
-          >
+          <ExTouchableOpacity style={styles.btnOption}>
             <Image
               style={styles.icon}
               source={require("../../../assets/icons/video.png")}
@@ -165,7 +159,10 @@ class index extends Component {
               <Text style={styles.name}>Past</Text>
             </View>
           </ExTouchableOpacity>
-          <ExTouchableOpacity onPress={this.onPressPageHandler} style={styles.btnOption}>
+          <ExTouchableOpacity
+            onPress={this.onPressPageHandler}
+            style={styles.btnOption}
+          >
             <Image
               style={styles.icon}
               source={require("../../../assets/icons/article.png")}

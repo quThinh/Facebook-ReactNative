@@ -36,7 +36,6 @@ import CommentsPopUp from './src/screens/CommentsPopUp'
 import PostDetail from './src/screens/PostDetail'
 import SharePost from './src/screens/SharePost'
 import PostOptions from './src/screens/PostOptions'
-import StoryDetailScreen from './src/screens/StoryDetail'
 
 import NotificationScreen from "./src/screens/NotificationTab";
 import NotificationOptions from './src/screens/NotificationTab/NotificationOptions'
@@ -209,7 +208,6 @@ function App() {
       <NavigationContainer ref={navigationRef}>
         <rootStack.Navigator screenOptions={navigationOptions}>
           <rootStack.Screen component={MainTab} name="MainTab" />
-          <rootStack.Screen name="StoryDetail" component={StoryDetailScreen} />
 					<rootStack.Screen name="PostDetail" component={PostDetail} />
 
 		

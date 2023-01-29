@@ -14,7 +14,6 @@ import {
 import { Dimensions } from "react-native";
 import RecommendFriends from "../../components/RecommendFriends";
 import Item from "../../components/Item";
-import Stories from "../../components/Stories";
 import PostTool from "../../components/PostTool";
 class Home extends Component {
   constructor(props) {
@@ -33,7 +32,7 @@ class Home extends Component {
       <View>
         <ScrollView bounces={false} style={styles.listContainter}>
           <PostTool></PostTool>
-          <Stories></Stories>
+          {/* <Stories></Stories> */}
           {posts.map((item, index) => (
             <View key={index}>
               {index === 1 && <RecommendFriends></RecommendFriends>}
