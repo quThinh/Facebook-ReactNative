@@ -7,7 +7,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest --watchAll",
-    "dbstart": "json-server .mock-db/db.json --host 192.168.52.57"
+    "dbstart": "json-server .mock-db/db.json --host 192.168.178.101"
   },
   "jest": {
     "preset": "jest-expo"
@@ -30,6 +30,7 @@
     "expo-linking": "~3.2.2",
     "expo-media-library": "^15.0.0",
     "expo-notifications": "~0.16.1",
+    "expo-secure-store": "~11.3.0",
     "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
     "expo-video-player": "^2.2.0",

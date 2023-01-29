@@ -8,7 +8,7 @@ import { Platform, LogBox } from "react-native";
 import { navigationRef } from "./rootNavigation";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import axios from 'axios'
-
+import * as SecureStore from 'expo-secure-store';
 import { NavigationContainer, useIsFocused } from "@react-navigation/native";
 import {
   createStackNavigator,
@@ -195,7 +195,12 @@ const MainTab = () => {
   );
 };
 function App() {
-  const isSignedIn = false
+  let isSignedIn;
+  const getAccessToken = async () => {
+    isSignedIn = await SecureStore.getItemAsync('secure_token')
+  }
+  getAccessToken();
+  console.log("isSignedIn:", isSignedIn);
   const TransitionPreset =
     Platform.OS === "ios" ? TransitionPresets.ModalSlideFromBottomIOS : {};
   const navigationOptions: StackNavigationOptions = {

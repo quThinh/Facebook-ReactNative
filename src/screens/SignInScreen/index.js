@@ -15,7 +15,7 @@ import {
   AsyncStorage,
 } from "react-native";
 // import { Navigation } from 'react-native-navigation';
-
+import * as SecureStore from 'expo-secure-store';
 const axios = require("axios");
 
 import styles from "./Login.style";
@@ -61,13 +61,17 @@ export default class Login extends Component {
   };
 
   handleLogin = () => {
+    console.log(this.state)
     axios
-      .post("http://192.168.52.57:8080/users/login", {
+      .post("http://192.168.178.101:8080/users/login", {
         email: this.state.inputEmail,
         password: this.state.inputPass,
       })
-      .then((res) => {
+      .then(async (res) => {
         const data = res.data.user;
+        console.log(data.token)
+        await SecureStore.setItemAsync('secure_token', data.token);
+        console.log(await SecureStore.getItemAsync('secure_token'))
         if (data == null) {
           alert("Thiếu thông tin");
           console.log(res);
@@ -78,7 +82,6 @@ export default class Login extends Component {
       })
       .catch((err) => {
         console.log("auth create", err);
-        console.log(this.state.inputEmail);
         alert("Sai tên đăng nhập hoặc mật khẩu");
       });
   };
@@ -104,7 +107,7 @@ export default class Login extends Component {
   //     }
   //   });
   // }
-
+  
   render() {
     return (
       <ScrollView>
