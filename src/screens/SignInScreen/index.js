@@ -19,8 +19,9 @@ import * as SecureStore from 'expo-secure-store';
 const axios = require("axios");
 
 import styles from "./Login.style";
-
+axios.defaults.headers.common = {'Authorization': `bearer ${store}`}
 export default class Login extends Component {
+  
   constructor() {
     super();
     this.state = {
@@ -59,9 +60,13 @@ export default class Login extends Component {
       buttonRegister: "Tạo tài khoản facebook mới",
     });
   };
-
+  
   handleLogin = () => {
-    console.log(this.state)
+    let config = {
+      headers: {
+        'Authorization': 'Bearer '
+      }
+    }
     axios
       .post("http://192.168.178.101:8080/users/login", {
         email: this.state.inputEmail,
@@ -71,7 +76,6 @@ export default class Login extends Component {
         const data = res.data.user;
         console.log(data.token)
         await SecureStore.setItemAsync('secure_token', data.token);
-        console.log(await SecureStore.getItemAsync('secure_token'))
         if (data == null) {
           alert("Thiếu thông tin");
           console.log(res);

@@ -195,11 +195,11 @@ const MainTab = () => {
   );
 };
 function App() {
-  let isSignedIn;
-  const getAccessToken = async () => {
-    isSignedIn = await SecureStore.getItemAsync('secure_token')
-  }
-  getAccessToken();
+  let isSignedIn = false;
+  // const getAccessToken = async () => {
+  //   isSignedIn = await SecureStore.getItemAsync('secure_token')
+  // }
+  // getAccessToken();
   console.log("isSignedIn:", isSignedIn);
   const TransitionPreset =
     Platform.OS === "ios" ? TransitionPresets.ModalSlideFromBottomIOS : {};
