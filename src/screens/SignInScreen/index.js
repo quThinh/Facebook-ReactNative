@@ -12,9 +12,8 @@ import {
   StatusBar,
   TouchableOpacity,
   TouchableHighlight,
-  AsyncStorage,
 } from "react-native";
-// import { Navigation } from 'react-native-navigation';
+import { navigation } from "../../../rootNavigation";
 
 const axios = require("axios");
 
@@ -62,7 +61,7 @@ export default class Login extends Component {
 
   handleLogin = () => {
     axios
-      .post("http://192.168.52.57:8080/users/login", {
+      .post("http://192.168.224.110:8080/users/login", {
         email: this.state.inputEmail,
         password: this.state.inputPass,
       })
@@ -73,7 +72,7 @@ export default class Login extends Component {
           console.log(res);
         } else {
           console.log("success");
-          // AsyncStorage.setItem("token", res.data.data.token);
+          navigation.navigate("MainTab");
         }
       })
       .catch((err) => {
@@ -82,17 +81,6 @@ export default class Login extends Component {
         alert("Sai tên đăng nhập hoặc mật khẩu");
       });
   };
-
-  // async componentDidMount() {
-  //   const value = await AsyncStorage.getItem("token");
-  //   if (value !== null) {
-  //     await Navigation.push(this.props.componentId, {
-  //       component: {
-  //         name: "Home",
-  //       },
-  //     });
-  //   }
-  // }
 
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });

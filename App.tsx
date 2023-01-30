@@ -27,8 +27,6 @@ import { BASE_URL, STATUSBAR_HEIGHT } from "./constants";
 import { FullPostTool, CheckIn, PhotoUploader, LiveStream } from './src/screens/PostTools/'
 
 import HomeScreen from "./src/screens/HomeScreen";
-// import WatchScreen from "./src/screens/WatchTab";
-// import WatchSearch from './src/screens/Search/WatchSearch'
 
 import ShortCutScreen from "./src/screens/ShortCutTab";
 import Comments from "./src/screens/Comments";
@@ -99,20 +97,6 @@ const GroupTab = () => {
     </Stack.Navigator>
   );
 };
-// const WatchScreenWithIsFocused = (
-//   props: JSX.IntrinsicAttributes & { [x: string]: any }
-// ) => {
-//   const isFocused = useIsFocused();
-//   return <WatchScreen {...props} isFocused={isFocused}></WatchScreen>;
-// };
-
-// const WatchTab = () => {
-//   return (
-//     <Stack.Navigator screenOptions={{ headerShown: false }}>
-//       <Stack.Screen name="WatchScreen" component={WatchScreenWithIsFocused} />
-//     </Stack.Navigator>
-//   );
-// };
 
 const ProfileTab = () => {
 	return (
@@ -207,10 +191,9 @@ function App() {
     <Provider store={store}>
       <NavigationContainer ref={navigationRef}>
         <rootStack.Navigator screenOptions={navigationOptions}>
-        {isSignedIn  ? (
-      // No token found, user isn't signed in
-      <>
-      <rootStack.Screen component={MainTab} name="MainTab" />
+          <rootStack.Screen name="SignIn" component={Login} />
+          {/* <Stack.Screen name="SignUp" component={SignUpScreen} /> */}
+          <rootStack.Screen component={MainTab} name="MainTab" />
 					<rootStack.Screen name="PostDetail" component={PostDetail} />
 
 					<rootStack.Screen options={{ gestureEnabled: false }} name="PhotoChooser" component={PhotoChooser} />
@@ -242,15 +225,6 @@ function App() {
 					<rootStack.Screen name="CheckIn" component={CheckIn} />
 					{/* <rootStack.Screen name="PhotoUploader" component={PhotoUploader} /> */}
 					<rootStack.Screen name="LiveStream" component={LiveStream} />
-          </>
-      
-    ) : (
-      // User is signed in
-      <>
-      <Stack.Screen name="SignIn" component={Login} />
-      {/* <Stack.Screen name="SignUp" component={SignUpScreen} /> */}
-    </>
-    )}
           
         </rootStack.Navigator>
       </NavigationContainer>
