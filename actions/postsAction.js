@@ -1,6 +1,6 @@
 import {postsActions} from '../constants'
 import axios from 'axios'
-const taskURI  = '/posts?_expand=user'
+const taskURI  = '/articles'
 export const FetchPostsRequest = ()=>{
     return (dispatch)=>{
         dispatch(FetchDefaultState())

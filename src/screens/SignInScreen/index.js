@@ -14,7 +14,7 @@ import {
   TouchableHighlight,
 } from "react-native";
 import { navigation } from "../../../rootNavigation";
-
+import * as SecureStore from 'expo-secure-store';
 const axios = require("axios");
 
 import styles from "./Login.style";
@@ -30,8 +30,8 @@ export default class Login extends Component {
       dashOr: "OR",
       buttonRegister: "Create New Facebook Account",
 
-      inputEmail: "",
-      inputPass: "",
+      inputEmail: "quangthinh021112@gmail.com",
+      inputPass: "Kakaka1.",
 
       modalVisible: false,
     };
@@ -61,12 +61,13 @@ export default class Login extends Component {
 
   handleLogin = () => {
     axios
-      .post("http://192.168.224.110:8080/users/login", {
+      .post("http://192.168.178.101:8080/users/login", {
         email: this.state.inputEmail,
         password: this.state.inputPass,
       })
-      .then((res) => {
+      .then(async(res) => {
         const data = res.data.user;
+        await SecureStore.setItemAsync('secure_token', data.token);
         if (data == null) {
           alert("Thiếu thông tin");
           console.log(res);

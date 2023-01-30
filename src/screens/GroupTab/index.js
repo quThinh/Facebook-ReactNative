@@ -12,8 +12,8 @@ class index extends Component {
     super(props);
   }
   componentDidMount() {
-    const { fetchGroups } = this.props;
-    fetchGroups();
+    // const { fetchGroups } = this.props;
+    // fetchGroups();
   }
   onPressGroupSearchHandler() {
     navigation.navigate("GroupSearch");
@@ -133,12 +133,13 @@ const mapStateToProps = (state) => {
     groups: state.groups,
   };
 };
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    fetchGroups: () => dispatch(FetchGroupsRequest()),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(index);
+// const mapDispatchToProps = (dispatch, props) => {
+//   return {
+//     fetchGroups: () => dispatch(FetchGroupsRequest()),
+//   };
+// };
+// export default connect(mapStateToProps, mapDispatchToProps)(index);
+export default connect(mapStateToProps)(index);
 const styles = StyleSheet.create({
   container: {},
   topWrapper: {

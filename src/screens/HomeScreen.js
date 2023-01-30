@@ -10,7 +10,8 @@ import {
   ScrollView,
   Alert,
 } from "react-native";
-
+import * as SecureStore from 'expo-secure-store';
+import { getUserInfo } from "../../actions/getUserInfo";
 import { Dimensions } from "react-native";
 import RecommendFriends from "../../components/RecommendFriends";
 import Item from "../../components/Item";
@@ -19,21 +20,24 @@ class Home extends Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {
+  async componentDidMount() {
     const { fetchPosts, postLogin } = this.props;
     fetchPosts();
-    postLogin();
+    // const user = await getUserInfo();
+    // console.log(user)
   }
   render() {
     const { navigation } = this.props;
-    const { posts } = this.props;
+    let { posts } = this.props;
+    // posts = posts.article;
+    console.log("here", posts.article);
     if (posts.length === 0) return <View></View>;
     return (
       <View>
         <ScrollView bounces={false} style={styles.listContainter}>
           <PostTool></PostTool>
           {/* <Stories></Stories> */}
-          {posts.map((item, index) => (
+          {posts.article.map((item, index) => (
             <View key={index}>
               {index === 1 && <RecommendFriends></RecommendFriends>}
               <Item item={item} key={index}></Item>
@@ -47,7 +51,6 @@ class Home extends Component {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     fetchPosts: () => dispatch(FetchPostsRequest()),
-    postLogin: () => dispatch(LoginRequest("vucms", "vucms")),
   };
 };
 const mapStateToProps = (state) => {

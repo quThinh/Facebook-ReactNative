@@ -12,7 +12,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import * as navigation from "../../rootNavigation";
 import { permission } from "../../constants";
 import { connect } from "react-redux";
-
+import { beautifulDate } from "../../utils";
 class Item extends Component {
   constructor(props) {
     super(props);
@@ -57,7 +57,7 @@ class Item extends Component {
           <View style={styles.customListView}>
             <Image
               style={styles.avatar}
-              source={{ uri: item.user?.avatar_url }}
+              source={{ uri: item.User?.avatar_url ? item.User?.avatar_url : "https://picsum.photos/id/237/200/300" }}
             ></Image>
             <View style={styles.infoWrapper}>
               <View style={styles.namesWrapper}>
@@ -65,13 +65,13 @@ class Item extends Component {
                   onPress={this.onPressProfileHandler.bind(this, item.user?.id)}
                 >
                   <Text style={{ fontSize: 16, fontWeight: "500" }}>
-                    {item.user?.name}
+                    {item.User?.name && item.User?.name || "Quang Thịnh" }
                   </Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.extraInfoWrapper}>
                 <Text style={{ color: "#333", fontSize: 14 }}>
-                  {item.create_at}
+                  {beautifulDate(String(item.create_at))}
                 </Text>
                 <Text style={{ fontSize: 16, marginHorizontal: 5 }}>·</Text>
                 {item.permission == permission.PUBLIC && (
@@ -100,7 +100,7 @@ class Item extends Component {
           onPress={this.onPressPostImageHandler.bind(this, item.id)}
         >
           <View style={styles.imageContainer}>
-            <ScaledImage height={300} source={item.image}></ScaledImage>
+            <ScaledImage height={300} source={item?.image ? item?.image : "https://picsum.photos/200/300"}></ScaledImage>
           </View>
         </TouchableOpacity>
         <View horizontal={true} style={styles.reactionContainer}>
@@ -163,7 +163,7 @@ class Item extends Component {
             >
               <Text style={{ fontSize: 12 }}>
                 {" "}
-                {item.comments.length} comments
+                {item?.comments?.length} comments
               </Text>
             </Icon>
           </TouchableOpacity>

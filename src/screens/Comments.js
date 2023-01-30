@@ -107,7 +107,7 @@ export default class extends Component {
                 onScroll={this._onScroll.bind(this)}
                 style={styles.container}
               >
-                {comments.map((comment, index) => (
+                {comments?.map((comment, index) => (
                   <Comment key={index} comment={comment}>
                     Detail
                   </Comment>

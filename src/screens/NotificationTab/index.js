@@ -19,8 +19,8 @@ class index extends Component {
     super(props);
   }
   componentDidMount() {
-    const { fetchNotifications } = this.props;
-    fetchNotifications();
+    // const { fetchNotifications } = this.props;
+    // fetchNotifications();
   }
   onPressSearchHandler() {
     navigation.navigate("Search");
@@ -57,12 +57,13 @@ const mapStateToProps = (state) => {
     notifications: state.notifications,
   };
 };
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    fetchNotifications: () => dispatch(FetchNotificationsRequest()),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(index);
+// const mapDispatchToProps = (dispatch, props) => {
+//   return {
+//     fetchNotifications: () => dispatch(FetchNotificationsRequest()),
+//   };
+// };
+// export default connect(mapStateToProps, mapDispatchToProps)(index);
+export default connect(mapStateToProps)(index);
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
