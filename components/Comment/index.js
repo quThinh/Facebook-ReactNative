@@ -3,10 +3,10 @@ import { View, Image, TouchableOpacity, Text, Dimensions, StyleSheet } from 'rea
 import ScaledImage from '../ScaledImage'
 export default class Comment extends Component {
     render() {
-        const { comment } = this.props
+        const { comment } = this.props;
         return (
             <View style={styles.container}>
-                <Image style={styles.avatar} source={{ uri: comment.avatar_url }}></Image>
+                <Image style={styles.avatar} source={{ uri: comment.avatar_url ? comment.avatar_url : "https://picsum.photos/200/300/?blur"}}></Image>
                 <View style={styles.centerContainer}>
                     <View style={styles.contentContainer}>
                         <TouchableOpacity><Text style={styles.name}>{comment.name}</Text></TouchableOpacity>

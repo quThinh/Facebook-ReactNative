@@ -30,14 +30,13 @@ class Home extends Component {
     const { navigation } = this.props;
     let { posts } = this.props;
     // posts = posts.article;
-    console.log("here", posts.article);
-    if (posts.length === 0) return <View></View>;
+    // if (posts || posts?.articleData?.length === 0) return <View></View>;
     return (
       <View>
         <ScrollView bounces={false} style={styles.listContainter}>
           <PostTool></PostTool>
           {/* <Stories></Stories> */}
-          {posts.article.map((item, index) => (
+          {posts?.articleData?.map((item, index) => (
             <View key={index}>
               {index === 1 && <RecommendFriends></RecommendFriends>}
               <Item item={item} key={index}></Item>

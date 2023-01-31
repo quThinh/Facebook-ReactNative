@@ -30,8 +30,8 @@ export default class Login extends Component {
       dashOr: "OR",
       buttonRegister: "Create New Facebook Account",
 
-      inputEmail: "quangthinh021112@gmail.com",
-      inputPass: "Kakaka1.",
+      inputEmail: "quang@gmail.com",
+      inputPass: "1",
 
       modalVisible: false,
     };
