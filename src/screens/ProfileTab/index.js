@@ -72,7 +72,9 @@ class index extends PureComponent {
             </View>
           </View>
           <View style={styles.introWrapper}>
-            <Text style={styles.name}>{user.name}</Text>
+            <Text style={styles.name}>
+              {user.first_name} {user.last_name}
+            </Text>
             <Text style={styles.subName}>({user.subName})</Text>
             <Text style={styles.introTxt}>{user.introTxt}</Text>
             <View style={styles.introOptionsWrapper}>
@@ -145,41 +147,6 @@ class index extends PureComponent {
                 Relationship{" "}
                 <Text style={styles.introHightLight}>{user.relationship}</Text>
               </Text>
-            </View>
-            <View style={styles.introLine}>
-              <FontAwesome5Icon
-                size={20}
-                color="#333"
-                style={styles.introIcon}
-                name="rss"
-              />
-              <Text style={styles.introLineText}>
-                Followed by{" "}
-                <Text style={styles.introHightLight}>{user.follower} </Text>
-                followers
-              </Text>
-            </View>
-            <View style={styles.introLine}>
-              <FontAwesome5Icon
-                size={20}
-                color="#333"
-                style={styles.introIcon}
-                name="github"
-              />
-              <TouchableOpacity>
-                <Text style={styles.introLineText}>{user.links.github}</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.introLine}>
-              <FontAwesome5Icon
-                size={20}
-                color="#333"
-                style={styles.introIcon}
-                name="link"
-              />
-              <TouchableOpacity>
-                <Text style={styles.introLineText}>{user.links.repl}</Text>
-              </TouchableOpacity>
             </View>
             <View style={styles.introLine}>
               <FontAwesome5Icon

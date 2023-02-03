@@ -17,6 +17,7 @@ export const LoginRequest = () => {
         dispatch(FetchHighLightPhotosRequest(user.id));
         dispatch(FetchFriendsRequest(user.id));
         dispatch(FetchProfilePostsRequest(user.id));
+        dispatch(LoginSuccess(user));
         // if (users.length > 0) {
         //   let user = users[0];
 
