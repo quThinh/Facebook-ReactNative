@@ -10,7 +10,7 @@ import {
   ScrollView,
   Alert,
 } from "react-native";
-import * as SecureStore from 'expo-secure-store';
+import * as SecureStore from "expo-secure-store";
 import { getUserInfo } from "../../actions/getUserInfo";
 import { Dimensions } from "react-native";
 import RecommendFriends from "../../components/RecommendFriends";
@@ -23,6 +23,7 @@ class Home extends Component {
   async componentDidMount() {
     const { fetchPosts, postLogin } = this.props;
     fetchPosts();
+    postLogin();
     // const user = await getUserInfo();
     // console.log(user)
   }
@@ -50,6 +51,7 @@ class Home extends Component {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     fetchPosts: () => dispatch(FetchPostsRequest()),
+    postLogin: () => dispatch(LoginRequest()),
   };
 };
 const mapStateToProps = (state) => {

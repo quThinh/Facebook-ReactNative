@@ -53,12 +53,6 @@ import AvatarOptions from "./src/screens/ProfileTab/AvatarOptions";
 import FindFriends from "./src/screens/ProfileTab/FindFriends";
 import FriendRequests from "./src/screens/ProfileTab/FriendRequests";
 
-import GroupSearch from './src/screens/Search/GroupSearch'
-import GroupCategory from './src/screens/GroupTab/GroupCategory'
-import GroupCategories from './src/screens/GroupTab/GroupCategories'
-import GroupProfile from './src/screens/GroupTab/group'
-import GroupScreen from './src/screens/GroupTab'
-
 import Search from "./src/screens/Search";
 import Result from './src/screens/Search/Result'
 
@@ -90,13 +84,13 @@ const HomeTab = () => {
   );
 };
 
-const GroupTab = () => {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="GroupScreen" component={GroupScreen} />
-    </Stack.Navigator>
-  );
-};
+// const GroupTab = () => {
+//   return (
+//     <Stack.Navigator screenOptions={{ headerShown: false }}>
+//       <Stack.Screen name="GroupScreen" component={GroupScreen} />
+//     </Stack.Navigator>
+//   );
+// };
 
 const ProfileTab = () => {
 	return (
@@ -143,7 +137,7 @@ const MainTab = () => {
         name="Home"
         component={HomeTab}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         options={{
           tabBarIcon: ({ color, focused }) => (
             <Icon
@@ -155,7 +149,7 @@ const MainTab = () => {
         }}
         name="Group"
         component={GroupTab}
-      />
+      /> */}
 			<Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='user-circle' size={22} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
 				name="Profile" component={ProfileTab} />
@@ -213,10 +207,10 @@ function App() {
 
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="NotificationOptions" component={NotificationOptions} />
 
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupCategory" component={GroupCategory} />
+					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupCategory" component={GroupCategory} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupCategories" component={GroupCategories} />
 					<rootStack.Screen options={{ gestureEnabled: false }} name="GroupSearch" component={GroupSearch} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupProfile" component={GroupProfile} />
+					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupProfile" component={GroupProfile} /> */}
 
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="CommentsPopUp" component={CommentsPopUp} />
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="SharePost" component={SharePost} />

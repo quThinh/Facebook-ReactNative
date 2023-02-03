@@ -14,7 +14,7 @@ import {
   TouchableHighlight,
 } from "react-native";
 import { navigation } from "../../../rootNavigation";
-import * as SecureStore from 'expo-secure-store';
+import * as SecureStore from "expo-secure-store";
 const axios = require("axios");
 
 import styles from "./Login.style";
@@ -61,18 +61,19 @@ export default class Login extends Component {
 
   handleLogin = () => {
     axios
-      .post("http://192.168.178.101:8080/users/login", {
+      .post("http://192.168.1.5:8080/users/login", {
         email: this.state.inputEmail,
         password: this.state.inputPass,
       })
-      .then(async(res) => {
+      .then(async (res) => {
         const data = res.data.user;
-        await SecureStore.setItemAsync('secure_token', data.token);
+        await SecureStore.setItemAsync("secure_token", data.token);
         if (data == null) {
           alert("Thiếu thông tin");
           console.log(res);
         } else {
           console.log("success");
+          console.log(await SecureStore.getItemAsync("secure_token"));
           navigation.navigate("MainTab");
         }
       })
