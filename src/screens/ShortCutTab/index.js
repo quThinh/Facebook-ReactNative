@@ -30,14 +30,8 @@ class index extends Component {
     const { friends } = this.props;
     navigation.navigate("FullFriends", { friends });
   }
-  onPressGroupsHandler() {
-    navigation.navigate("Group");
-  }
   onpressFriendAroundHandler() {
     navigation.navigate("FindFriends");
-  }
-  onPressMarketplaceHandler() {
-    navigation.navigate("Marketplace");
   }
   onPressToggleShowHandler() {
     if (this.state.isShowMore) {
@@ -113,10 +107,7 @@ class index extends Component {
               <Text style={styles.name}>Friends</Text>
             </View>
           </ExTouchableOpacity>
-          <ExTouchableOpacity
-            onPress={this.onPressGroupsHandler}
-            style={styles.btnOption}
-          >
+          <ExTouchableOpacity style={styles.btnOption}>
             <Image
               style={styles.icon}
               source={require("../../../assets/icons/group.png")}
@@ -125,10 +116,7 @@ class index extends Component {
               <Text style={styles.name}>Groups</Text>
             </View>
           </ExTouchableOpacity>
-          <ExTouchableOpacity
-            onPress={this.onPressMarketplaceHandler}
-            style={styles.btnOption}
-          >
+          <ExTouchableOpacity style={styles.btnOption}>
             <Image
               style={styles.icon}
               source={require("../../../assets/icons/marketplace.png")}

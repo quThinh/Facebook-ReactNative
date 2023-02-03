@@ -22,12 +22,7 @@ import {
   commonSearchRequest,
   SearchUsersRequest,
 } from "../../../actions/searchingActions";
-import {
-  Peoples,
-  Posts,
-  Pages,
-  Groups,
-} from "../../../components/SearchResult";
+import { Peoples, Posts } from "../../../components/SearchResult";
 class Result extends Component {
   constructor(props) {
     super(props);
@@ -171,27 +166,6 @@ class Result extends Component {
           <TouchableOpacity
             onPress={this.onPressChangeCategoryHandler.bind(
               this,
-              resultTypes.GROUP
-            )}
-            style={{
-              ...styles.btnCategory,
-              backgroundColor:
-                currentCategory === resultTypes.GROUP ? "#318bfb" : "#ddd",
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 14,
-                fontWeight: "500",
-                color: currentCategory === resultTypes.GROUP ? "#fff" : "#000",
-              }}
-            >
-              GROUPS
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={this.onPressChangeCategoryHandler.bind(
-              this,
               resultTypes.PAGE
             )}
             style={{
@@ -284,7 +258,7 @@ class Result extends Component {
               resultTypes.POST
             )}
           />
-          <Pages
+          {/* <Pages
             hidden={
               currentCategory !== resultTypes.ALL &&
               currentCategory !== resultTypes.PAGE
@@ -294,8 +268,8 @@ class Result extends Component {
               this,
               resultTypes.PAGE
             )}
-          />
-          <Groups
+          /> */}
+          {/* <Groups
             hidden={
               currentCategory !== resultTypes.ALL &&
               currentCategory !== resultTypes.GROUP
@@ -305,7 +279,7 @@ class Result extends Component {
               this,
               resultTypes.GROUP
             )}
-          />
+          /> */}
         </ScrollView>
       </View>
     );
