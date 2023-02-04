@@ -27,8 +27,8 @@ class index extends Component {
     navigation.navigate("Profile");
   }
   onPressFullFriendsHandler() {
-    const { friends } = this.props;
-    navigation.navigate("FullFriends", { friends });
+    // const { friends } = this.props;
+    navigation.navigate("FullFriends");
   }
   onpressFriendAroundHandler() {
     navigation.navigate("FindFriends");

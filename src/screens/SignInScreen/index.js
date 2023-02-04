@@ -61,7 +61,7 @@ export default class Login extends Component {
 
   handleLogin = () => {
     axios
-      .post("http://192.168.1.5:8080/users/login", {
+      .post("http://172.20.10.6:8080/users/login", {
         email: this.state.inputEmail,
         password: this.state.inputPass,
       })
@@ -74,6 +74,7 @@ export default class Login extends Component {
         } else {
           console.log("success");
           console.log(await SecureStore.getItemAsync("secure_token"));
+          console.log(data.token);
           navigation.navigate("MainTab");
         }
       })

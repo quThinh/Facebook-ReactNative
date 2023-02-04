@@ -16,16 +16,35 @@ import {
 } from "../../../constants";
 import { navigation } from "../../../rootNavigation";
 import ExTouchableOpacity from "../../../components/ExTouchableOpacity";
+import * as SecureStore from "expo-secure-store";
+import axios from "axios";
 
 export default class FullFriends extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      friends: [...props.route.params.friends],
+      friends: [],
       filterType: 1,
       keyword: "",
     };
     this._currentTab = 1;
+  }
+  async componentDidMount() {
+    const userEmail = this.props.route.params?.userEmail;
+    const apiUrl = userEmail ? `/friends/list/${userEmail}` : "/friends/list"
+    const response = await axios.get(apiUrl, {
+      headers : {
+        Authorization: `Bearer ${await SecureStore.getItemAsync(
+          "secure_token"
+        )}`,
+      },
+    });
+
+    console.log(response.data.listFriend)
+    this.setState({
+      ...this.props,
+      friends: response.data.listUser,
+    })
   }
   onPressGoBackHandler() {
     navigation.goBack();
@@ -166,73 +185,78 @@ export default class FullFriends extends Component {
             showsVerticalScrollIndicator={false}
           >
             <Text style={styles.friendsCount}>{friends.length} Friends</Text>
-            <View style={styles.friends}>
-              {friends.map((friend, index) => (
-                <View key={index}>
-                  {friend.name.indexOf(keyword) > -1 ? (
-                    <ExTouchableOpacity
-                      onPress={this.onPressProfileHandler.bind(this, friend.id)}
-                      key={index}
-                      style={styles.friendItem}
-                    >
-                      <Image
-                        source={{ uri: friend.avatar_url }}
-                        style={styles.friendAvatar}
-                      />
-                      <View style={styles.friendInfoWrapper}>
-                        <Text style={styles.friendName}>{friend.name}</Text>
-                        <Text style={styles.friendMutualCount}>
-                          {friend.mutualFriends} mutual friends
-                        </Text>
-                      </View>
+            {friends.length ? (
+              <View style={styles.friends}>
+                {friends.map((friend, index) => (
+                  <View key={index}>
+                    {friend.first_name.indexOf(keyword) > -1 ? (
                       <ExTouchableOpacity
-                        onPress={this.onPressFriendOptionsHandler.bind(
-                          this,
-                          friend
-                        )}
-                        style={styles.btnFriendOptions}
+                        onPress={this.onPressProfileHandler.bind(this, friend.id)}
+                        key={index}
+                        style={styles.friendItem}
                       >
-                        <FontAwesome5Icon name="ellipsis-h" size={20} />
+                        <Image
+                          source={{ uri: friend.avatar_url }}
+                          style={styles.friendAvatar}
+                        />
+                        <View style={styles.friendInfoWrapper}>
+                          <Text style={styles.friendName}>{friend.first_name}</Text>
+                          {/* <Text style={styles.friendMutualCount}>
+                            {friend.mutualFriends} mutual friends
+                          </Text> */}
+                        </View>
+                        <ExTouchableOpacity
+                          onPress={this.onPressFriendOptionsHandler.bind(
+                            this,
+                            friend
+                          )}
+                          style={styles.btnFriendOptions}
+                        >
+                          <FontAwesome5Icon name="ellipsis-h" size={20} />
+                        </ExTouchableOpacity>
                       </ExTouchableOpacity>
-                    </ExTouchableOpacity>
-                  ) : (
-                    <View></View>
-                  )}
-                </View>
-              ))}
-            </View>
+                    ) : (
+                      <View></View>
+                    )}
+                  </View>
+                ))}
+              </View>
+            ) : null}
           </ScrollView>
-          <ScrollView
-            style={styles.friendsWrapper}
-            bounces={false}
-            showsVerticalScrollIndicator={false}
-          >
-            <View style={styles.friends}>
-              {friends.map((friend, index) => (
-                <View key={index}>
-                  {friend.isRecent & (friend.name.indexOf(keyword) > -1) ? (
-                    <ExTouchableOpacity key={index} style={styles.friendItem}>
-                      <Image
-                        source={{ uri: friend.avatar_url }}
-                        style={styles.friendAvatar}
-                      />
-                      <View style={styles.friendInfoWrapper}>
-                        <Text style={styles.friendName}>{friend.name}</Text>
-                        <Text style={styles.friendMutualCount}>
-                          {friend.mutualFriends} mutual friends
-                        </Text>
-                      </View>
-                      <TouchableOpacity style={styles.btnFriendOptions}>
-                        <FontAwesome5Icon name="ellipsis-h" size={20} />
-                      </TouchableOpacity>
-                    </ExTouchableOpacity>
-                  ) : (
-                    <View></View>
-                  )}
-                </View>
-              ))}
-            </View>
-          </ScrollView>
+          {friends.length ? (
+            <ScrollView
+              style={styles.friendsWrapper}
+              bounces={false}
+              showsVerticalScrollIndicator={false}
+            >
+              <View style={styles.friends}>
+                {friends.map((friend, index) => (
+                  <View key={index}>
+                    {/* {friend.isRecent & (friend.first_name.indexOf(keyword) > -1) ? ( */}
+                    {(friend.first_name.indexOf(keyword) > -1) ? (
+                      <ExTouchableOpacity key={index} style={styles.friendItem}>
+                        <Image
+                          source={{ uri: friend.avatar_url }}
+                          style={styles.friendAvatar}
+                        />
+                        <View style={styles.friendInfoWrapper}>
+                          <Text style={styles.friendName}>{friend.first_name}</Text>
+                          {/* <Text style={styles.friendMutualCount}>
+                            {friend.mutualFriends} mutual friends
+                          </Text> */}
+                        </View>
+                        <TouchableOpacity style={styles.btnFriendOptions}>
+                          <FontAwesome5Icon name="ellipsis-h" size={20} />
+                        </TouchableOpacity>
+                      </ExTouchableOpacity>
+                    ) : (
+                      <View></View>
+                    )}
+                  </View>
+                ))}
+              </View>
+            </ScrollView>
+          ) : null}
         </ScrollView>
       </View>
     );
