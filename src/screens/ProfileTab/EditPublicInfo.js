@@ -150,32 +150,6 @@ export default class EditPublicInfo extends Component {
                   size={20}
                   color="#333"
                   style={styles.introIcon}
-                  name="github"
-                />
-                <TouchableOpacity>
-                  <Text style={styles.introLineText}>
-                    {userInfo.links.github}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.introLine}>
-                <FontAwesome5Icon
-                  size={20}
-                  color="#333"
-                  style={styles.introIcon}
-                  name="link"
-                />
-                <TouchableOpacity>
-                  <Text style={styles.introLineText}>
-                    {userInfo.links.repl}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.introLine}>
-                <FontAwesome5Icon
-                  size={20}
-                  color="#333"
-                  style={styles.introIcon}
                   name="ellipsis-h"
                 />
                 <TouchableOpacity>

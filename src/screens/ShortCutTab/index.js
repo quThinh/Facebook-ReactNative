@@ -26,6 +26,9 @@ class index extends Component {
   onPressViewMyProfileHandler() {
     navigation.navigate("Profile");
   }
+  onPressViewMessenger() {
+    navigation.navigate("Messenger");
+  }
   onPressFullFriendsHandler() {
     // const { friends } = this.props;
     navigation.navigate("FullFriends");
@@ -63,7 +66,9 @@ class index extends Component {
           >
             <Image style={styles.avatar} source={{ uri: user.avatar_url }} />
             <View>
-              <Text style={styles.name}>{user.name}</Text>
+              <Text style={styles.name}>
+                {user.first_name} {user.last_name}
+              </Text>
               <Text style={{ color: "#333" }}>View your profile page</Text>
             </View>
           </ExTouchableOpacity>
@@ -75,6 +80,18 @@ class index extends Component {
             <View>
               <Text style={styles.name}>Video on facebook</Text>
               <Text style={{ color: "#333" }}>X+ new videos</Text>
+            </View>
+          </ExTouchableOpacity>
+          <ExTouchableOpacity
+            onPress={this.onPressViewMessenger}
+            style={styles.btnOption}
+          >
+            <Image
+              style={styles.icon}
+              source={require("../../../assets/icons/messenger.png")}
+            />
+            <View>
+              <Text style={styles.name}>Messenger</Text>
             </View>
           </ExTouchableOpacity>
           <ExTouchableOpacity style={styles.btnOption}>

@@ -26,9 +26,9 @@ class ProfileX extends PureComponent {
     super(props);
   }
   componentDidMount() {
-    const { userId } = this.props.route.params;
+    const { emailID } = this.props.route.params;
     const { fetchUserInfo } = this.props;
-    fetchUserInfo(userId);
+    fetchUserInfo(emailID);
   }
   componentWillUnmount() {
     const { resetUserX } = this.props;
@@ -95,7 +95,9 @@ class ProfileX extends PureComponent {
               </View>
             </View>
             <View style={styles.introWrapper}>
-              <Text style={styles.name}>{user.name}</Text>
+              <Text style={styles.name}>
+                {user.first_name} {user.last_name}
+              </Text>
               <Text style={styles.subName}>({user.subName})</Text>
               <Text style={styles.introTxt}>{user.introTxt}</Text>
               <View style={styles.introOptionsWrapper}>
@@ -199,28 +201,6 @@ class ProfileX extends PureComponent {
                   size={20}
                   color="#333"
                   style={styles.introIcon}
-                  name="github"
-                />
-                <TouchableOpacity>
-                  <Text style={styles.introLineText}>{user.links.github}</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.introLine}>
-                <FontAwesome5Icon
-                  size={20}
-                  color="#333"
-                  style={styles.introIcon}
-                  name="link"
-                />
-                <TouchableOpacity>
-                  <Text style={styles.introLineText}>{user.links.repl}</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.introLine}>
-                <FontAwesome5Icon
-                  size={20}
-                  color="#333"
-                  style={styles.introIcon}
                   name="ellipsis-h"
                 />
                 <TouchableOpacity>
@@ -310,7 +290,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    fetchUserInfo: (userId) => dispatch(FetchUserXRequest(userId)),
+    fetchUserInfo: (emailID) => dispatch(FetchUserXRequest(emailID)),
     resetUserX: () => dispatch(ResetUserX()),
   };
 };

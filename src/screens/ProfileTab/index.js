@@ -41,9 +41,7 @@ class index extends PureComponent {
     navigation.navigate("ProfileSetting");
   }
   render() {
-    console.log(user);
     const { user, highlightPhotos, profilePosts } = this.props;
-    console.log(this.props);
     if (!user.hasOwnProperty("id")) return <View></View>;
     const friends = [...this.props.friends];
     return (
@@ -240,7 +238,6 @@ class index extends PureComponent {
   }
 }
 const mapStateToProps = (state) => {
-  console.log("state", state);
   return {
     user: state.user.user,
     highlightPhotos: state.user.highlightPhotos,

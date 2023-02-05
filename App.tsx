@@ -56,6 +56,8 @@ import FriendRequests from "./src/screens/ProfileTab/FriendRequests";
 import Search from "./src/screens/Search";
 import Result from './src/screens/Search/Result'
 
+import Messenger from "./src/screens/Messenger";
+
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
 ]);
@@ -63,12 +65,6 @@ LogBox.ignoreLogs([
 axios.defaults.baseURL = BASE_URL
 
 const HomeTab = () => {
-  // CameraRoll.getPhotos({
-  // 	first: 20,
-  // 	assetType: 'Photos',
-  // }).then(result => {
-  // 	console.log(result)
-  // })
   return (
     <Stack.Navigator
       screenOptions={{
@@ -219,6 +215,7 @@ function App() {
 					<rootStack.Screen name="CheckIn" component={CheckIn} />
 					{/* <rootStack.Screen name="PhotoUploader" component={PhotoUploader} /> */}
 					<rootStack.Screen name="LiveStream" component={LiveStream} />
+					<rootStack.Screen name="Messenger" component={Messenger} />
           
         </rootStack.Navigator>
       </NavigationContainer>

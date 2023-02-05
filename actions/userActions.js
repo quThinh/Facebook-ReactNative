@@ -14,22 +14,10 @@ export const LoginRequest = () => {
       })
       .then((v) => {
         const user = v.data;
-        dispatch(FetchHighLightPhotosRequest(user.id));
+        // dispatch(FetchHighLightPhotosRequest(user.id));
         dispatch(FetchFriendsRequest(user.id));
         dispatch(FetchProfilePostsRequest(user.id));
         dispatch(LoginSuccess(user));
-        // if (users.length > 0) {
-        //   let user = users[0];
-
-        //   const watch_list = user.watch_list
-        //     .slice(0, 3)
-        //     .map((page) => page.pageId);
-        // } else
-        //   dispatch(
-        //     LoginFailure({
-        //       message: "Your email and password are not correct!",
-        //     })
-        //   );
       })
       .catch((error) => {
         dispatch(LoginFailure(error));
@@ -53,20 +41,20 @@ export const LoginSuccess = (user) => {
     payload: user,
   };
 };
-export const FetchHighLightPhotosRequest = (userId) => {
-  const taskURI = `users/${userId}/photos?_limit=9&isHighLight=true`;
-  return (dispatch) => {
-    axios
-      .get(taskURI)
-      .then((v) => {
-        const photos = v.data;
-        dispatch(FetchHighLightPhotosSuccess(photos));
-      })
-      .catch((error) => {
-        dispatch(FetchHighLightPhotosFailure(error));
-      });
-  };
-};
+// export const FetchHighLightPhotosRequest = (userId) => {
+//   const taskURI = `users/${userId}/photos?_limit=9&isHighLight=true`;
+//   return (dispatch) => {
+//     axios
+//       .get(taskURI)
+//       .then((v) => {
+//         const photos = v.data;
+//         dispatch(FetchHighLightPhotosSuccess(photos));
+//       })
+//       .catch((error) => {
+//         dispatch(FetchHighLightPhotosFailure(error));
+//       });
+//   };
+// };
 export const FetchHighLightPhotosFailure = (error) => {
   return {
     type: userActions.FETCH_HIGHLIGHT_PHOTOS_FAILURE,

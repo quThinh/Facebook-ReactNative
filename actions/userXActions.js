@@ -1,32 +1,24 @@
 import { userXActions } from "../constants";
 import axios from "axios";
-export const FetchUserXRequest = (userId) => {
-  const taskURI = `/users/${userId}`;
-  return (dispatch) => {
+import * as SecureStore from "expo-secure-store";
+export const FetchUserXRequest = (emailID) => {
+  const taskURI = `/users/${emailID}`;
+  return async (dispatch) => {
     axios
-      .get(taskURI)
+      .get(taskURI, {
+        headers: {
+          Authorization: `Bearer ${await SecureStore.getItemAsync(
+            "secure_token"
+          )}`,
+        },
+      })
       .then((v) => {
         let user = v.data;
-        delete user.username;
-        delete user.password;
-        dispatch(FetchUserXHighLightPhotosRequest(userId));
-        dispatch(FetchUserXFriendsRequest(userId));
-        dispatch(FetchUserXProfilePostsRequest(userId));
-        const watch_list = user.watch_list
-          .slice(0, 3)
-          .map((page) => page.pageId);
-        const watchListQuery = watch_list.join("&id=");
-        let taskURI2 = `/pages?id=${watchListQuery}`;
-        axios
-          .get(taskURI2)
-          .then((result) => {
-            const pages = result.data;
-            user.watch_list = pages;
-            dispatch(FetchUserXSuccess(user));
-          })
-          .catch((error) => {
-            dispatch(FetchUserXFailure(error));
-          });
+        console.log("succes");
+        dispatch(FetchUserXHighLightPhotosRequest(emailID));
+        dispatch(FetchUserXFriendsRequest(emailID));
+        dispatch(FetchUserXProfilePostsRequest(emailID));
+        dispatch(FetchUserXSuccess(user));
       })
       .catch((error) => {
         dispatch(FetchUserXFailure(error));

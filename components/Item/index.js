@@ -40,32 +40,44 @@ class Item extends Component {
       id: item.id,
     });
   }
-  onPressProfileHandler(userId) {
+  onPressProfileHandler(emailID) {
     const { user } = this.props;
-    if (userId === user.id) {
+    console.log(emailID);
+    console.log(user);
+    if (emailID === user.email) {
       return navigation.navigate("Profile");
     }
     navigation.push("ProfileX", {
-      userId,
+      emailID,
     });
   }
   render() {
     const { user, item } = this.props;
+    // console.log(user);
+    console.log(item);
+    // console.log(this.props);
     return (
       <View style={styles.item}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <View style={styles.customListView}>
             <Image
               style={styles.avatar}
-              source={{ uri: item.User?.avatar_url ? item.User?.avatar_url : "https://picsum.photos/id/237/200/300" }}
+              source={{
+                uri: item.User?.avatar_url
+                  ? item.User?.avatar_url
+                  : "https://picsum.photos/id/237/200/300",
+              }}
             ></Image>
             <View style={styles.infoWrapper}>
               <View style={styles.namesWrapper}>
                 <TouchableOpacity
-                  onPress={this.onPressProfileHandler.bind(this, item.user?.id)}
+                  onPress={this.onPressProfileHandler.bind(
+                    this,
+                    item.User?.email
+                  )}
                 >
                   <Text style={{ fontSize: 16, fontWeight: "500" }}>
-                    {item.User?.name && item.User?.name || "Quang Thịnh" }
+                    {(item.User?.name && item.User?.name) || "Quang Thịnh"}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -100,7 +112,12 @@ class Item extends Component {
           onPress={this.onPressPostImageHandler.bind(this, item.id)}
         >
           <View style={styles.imageContainer}>
-            <ScaledImage height={300} source={item?.image ? item?.image : "https://picsum.photos/200/300"}></ScaledImage>
+            <ScaledImage
+              height={300}
+              source={
+                item?.image ? item?.image : "https://picsum.photos/200/300"
+              }
+            ></ScaledImage>
           </View>
         </TouchableOpacity>
         <View horizontal={true} style={styles.reactionContainer}>
