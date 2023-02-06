@@ -73,7 +73,6 @@ export default class Login extends Component {
           console.log(res);
         } else {
           console.log("success");
-          console.log(await SecureStore.getItemAsync("secure_token"));
           console.log(data.token);
           navigation.navigate("MainTab");
         }

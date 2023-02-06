@@ -29,9 +29,10 @@ class Item extends Component {
       postDetail: item,
     });
   }
-  onPressPostImageHandler(id) {
+  onPressPostImageHandler(id, email) {
     navigation.navigate("PostDetail", {
       id,
+      email,
     });
   }
   onPressShareHandler() {
@@ -109,7 +110,11 @@ class Item extends Component {
           <Text style={styles.paragraph}>{item.content}</Text>
         </View>
         <TouchableOpacity
-          onPress={this.onPressPostImageHandler.bind(this, item.id)}
+          onPress={this.onPressPostImageHandler.bind(
+            this,
+            item.id,
+            item.User.email
+          )}
         >
           <View style={styles.imageContainer}>
             <ScaledImage

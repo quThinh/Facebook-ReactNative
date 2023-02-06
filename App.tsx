@@ -80,14 +80,6 @@ const HomeTab = () => {
   );
 };
 
-// const GroupTab = () => {
-//   return (
-//     <Stack.Navigator screenOptions={{ headerShown: false }}>
-//       <Stack.Screen name="GroupScreen" component={GroupScreen} />
-//     </Stack.Navigator>
-//   );
-// };
-
 const ProfileTab = () => {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -133,19 +125,6 @@ const MainTab = () => {
         name="Home"
         component={HomeTab}
       />
-      {/* <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, focused }) => (
-            <Icon
-              name="users"
-              size={20}
-              color={focused ? "#318bfb" : "#ddd"}
-            ></Icon>
-          ),
-        }}
-        name="Group"
-        component={GroupTab}
-      /> */}
 			<Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='user-circle' size={22} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
 				name="Profile" component={ProfileTab} />
@@ -187,7 +166,6 @@ function App() {
 					<rootStack.Screen name="PostDetail" component={PostDetail} />
 
 					<rootStack.Screen options={{ gestureEnabled: false }} name="PhotoChooser" component={PhotoChooser} />
-					{/* <rootStack.Screen options={{ gestureEnabled: false }} name="Camera" component={Camera} /> */}
 					<rootStack.Screen options={{ gestureEnabled: false }} name="Search" component={Search} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="Result" component={Result} />
 
@@ -202,11 +180,6 @@ function App() {
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="AvatarOptions" component={AvatarOptions} />
 
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="NotificationOptions" component={NotificationOptions} />
-
-					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupCategory" component={GroupCategory} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupCategories" component={GroupCategories} />
-					<rootStack.Screen options={{ gestureEnabled: false }} name="GroupSearch" component={GroupSearch} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupProfile" component={GroupProfile} /> */}
 
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="CommentsPopUp" component={CommentsPopUp} />
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="SharePost" component={SharePost} />

@@ -14,8 +14,6 @@ export const FetchUserXRequest = (emailID) => {
       })
       .then((v) => {
         let user = v.data;
-        console.log("succes");
-        dispatch(FetchUserXHighLightPhotosRequest(emailID));
         dispatch(FetchUserXFriendsRequest(emailID));
         dispatch(FetchUserXProfilePostsRequest(emailID));
         dispatch(FetchUserXSuccess(user));
@@ -40,32 +38,6 @@ export const FetchUserXSuccess = (user) => {
   return {
     type: userXActions.FETCH_USERX_SUCCESS,
     payload: user,
-  };
-};
-export const FetchUserXHighLightPhotosRequest = (userId) => {
-  const taskURI = `users/${userId}/photos?_limit=9&isHighLight=true`;
-  return (dispatch) => {
-    axios
-      .get(taskURI)
-      .then((v) => {
-        const photos = v.data;
-        dispatch(FetchUserXHighLightPhotosSuccess(photos));
-      })
-      .catch((error) => {
-        dispatch(FetchUserXHighLightPhotosFailure(error));
-      });
-  };
-};
-export const FetchUserXHighLightPhotosFailure = (error) => {
-  return {
-    type: userXActions.FETCH_USERX_HIGHLIGHT_PHOTOS_FAILURE,
-    error,
-  };
-};
-export const FetchUserXHighLightPhotosSuccess = (photos) => {
-  return {
-    type: userXActions.FETCH_USERX_HIGHLIGHT_PHOTOS_SUCCESS,
-    payload: photos,
   };
 };
 //Friends
@@ -118,8 +90,8 @@ export const FetchUserXFriendsSuccess = (friends) => {
   };
 };
 //Profie posts
-export const FetchUserXProfilePostsRequest = (userId) => {
-  const taskURI = `articles/user/${userId}`;
+export const FetchUserXProfilePostsRequest = (emailID) => {
+  const taskURI = `articles?author=${emailID}`;
   return (dispatch) => {
     axios
       .get(taskURI)

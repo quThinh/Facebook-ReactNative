@@ -47,81 +47,6 @@ export default class PostOptions extends Component {
           <TouchableOpacity style={styles.postOptionItemWrapper}>
             <View style={styles.postOptionItem}>
               <View style={styles.optionIcon}>
-                <FontAwesome5Icon name="bookmark" size={24}></FontAwesome5Icon>
-              </View>
-              <View>
-                <Text style={styles.postOptionTitle}>Book mark this post</Text>
-                <Text style={styles.postOptionSubtitle}>Add to saved list</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.postOptionItemWrapper}>
-            <View style={styles.postOptionItem}>
-              <View style={styles.optionIcon}>
-                <FontAwesome5Icon
-                  name="minus-square"
-                  size={24}
-                ></FontAwesome5Icon>
-              </View>
-              <View>
-                <Text style={styles.postOptionTitle}>Hide this post</Text>
-                <Text style={styles.postOptionSubtitle}>
-                  Hide similar posts
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.postOptionItemWrapper}>
-            <View style={styles.postOptionItem}>
-              <View style={styles.optionIcon}>
-                <FontAwesome5Icon name="clock" size={24}></FontAwesome5Icon>
-              </View>
-              <View>
-                <Text style={styles.postOptionTitle}>
-                  Temporarily hide {postDetail.name} for 30 days
-                </Text>
-                <Text style={styles.postOptionSubtitle}>
-                  Temporarily stop viewing posts
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.postOptionItemWrapper}>
-            <View style={styles.postOptionItem}>
-              <View style={styles.optionIcon}>
-                <FontAwesome5Icon
-                  name="user-times"
-                  size={24}
-                ></FontAwesome5Icon>
-              </View>
-              <View>
-                <Text style={styles.postOptionTitle}>
-                  Unfollow {postDetail.name}
-                </Text>
-                <Text style={styles.postOptionSubtitle}>
-                  Don't want to see {postDetail.name}'s posts
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.postOptionItemWrapper}>
-            <View style={styles.postOptionItem}>
-              <View style={styles.optionIcon}>
-                <FontAwesome5Icon
-                  name="exclamation-circle"
-                  size={24}
-                ></FontAwesome5Icon>
-              </View>
-              <View>
-                <Text style={styles.postOptionTitle}>
-                  Why do I see this post ?
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.postOptionItemWrapper}>
-            <View style={styles.postOptionItem}>
-              <View style={styles.optionIcon}>
                 <FontAwesome5Icon
                   name="exclamation-triangle"
                   size={24}
@@ -131,30 +56,6 @@ export default class PostOptions extends Component {
                 <Text style={styles.postOptionTitle}>Report this post</Text>
                 <Text style={styles.postOptionSubtitle}>
                   I'm worry about this post
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.postOptionItemWrapper}>
-            <View style={styles.postOptionItem}>
-              <View style={styles.optionIcon}>
-                <FontAwesome5Icon name="history" size={24}></FontAwesome5Icon>
-              </View>
-              <View>
-                <Text style={styles.postOptionTitle}>
-                  See edited content history
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.postOptionItemWrapper}>
-            <View style={styles.postOptionItem}>
-              <View style={styles.optionIcon}>
-                <FontAwesome5Icon name="bell" size={24}></FontAwesome5Icon>
-              </View>
-              <View>
-                <Text style={styles.postOptionTitle}>
-                  Turn on the notification about this post
                 </Text>
               </View>
             </View>
@@ -173,15 +74,6 @@ export default class PostOptions extends Component {
             </View>
           </TouchableOpacity>
         </View>
-        {/* <Toast
-          visible={this.state.isVisible}
-          position={50}
-          shadow={false}
-          animation={false}
-          hideOnPress={true}
-        >
-          Copied to clipboard
-        </Toast> */}
       </View>
     );
   }

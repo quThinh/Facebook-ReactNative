@@ -14,7 +14,6 @@ export const LoginRequest = () => {
       })
       .then((v) => {
         const user = v.data;
-        // dispatch(FetchHighLightPhotosRequest(user.id));
         dispatch(FetchFriendsRequest(user.id));
         dispatch(FetchProfilePostsRequest(user.id));
         dispatch(LoginSuccess(user));
@@ -39,32 +38,6 @@ export const LoginSuccess = (user) => {
   return {
     type: userActions.LOGIN_SUCCESS,
     payload: user,
-  };
-};
-// export const FetchHighLightPhotosRequest = (userId) => {
-//   const taskURI = `users/${userId}/photos?_limit=9&isHighLight=true`;
-//   return (dispatch) => {
-//     axios
-//       .get(taskURI)
-//       .then((v) => {
-//         const photos = v.data;
-//         dispatch(FetchHighLightPhotosSuccess(photos));
-//       })
-//       .catch((error) => {
-//         dispatch(FetchHighLightPhotosFailure(error));
-//       });
-//   };
-// };
-export const FetchHighLightPhotosFailure = (error) => {
-  return {
-    type: userActions.FETCH_HIGHLIGHT_PHOTOS_FAILURE,
-    error,
-  };
-};
-export const FetchHighLightPhotosSuccess = (photos) => {
-  return {
-    type: userActions.FETCH_HIGHLIGHT_PHOTOS_SUCCESS,
-    payload: photos,
   };
 };
 //Friends
