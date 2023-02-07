@@ -27,9 +27,9 @@ class FriendRequests extends Component {
     fetchFriendRequest();
   }
   onPressRemoveFriendRequest(index) {}
-  onPressProfileHandler(userId) {
-    navigation.push("ProfileX", {
-      userId,
+  onPressProfileHandler(emailId) {
+    navigation.navigate("ProfileX", {
+      emailId,
     });
   }
   onPressGoBackHandler() {
@@ -64,22 +64,22 @@ class FriendRequests extends Component {
             <View style={styles.friendRequests}>
               {friendRequests.map((friendRequest, index) => (
                 <ExTouchableOpacity
-                  onPress={this.onPressProfileHandler.bind(
-                    this,
-                    friendRequest.user.id
+                  onPress={this.onPressProfileHandler(
+                
+                    friendRequest.send_user.email
                   )}
                   key={index}
                   style={styles.recommendFriendItem}
                 >
                   <Image
                     style={styles.avatar}
-                    source={{ uri: friendRequest.user.avatar_url }}
+                    source={{ uri: friendRequest.send_user.avatar_url }}
                   />
                   <View style={styles.recommendInfo}>
-                    <Text style={styles.name}>{friendRequest.user.name}</Text>
-                    <Text style={styles.mutualCount}>
+                    <Text style={styles.name}>{friendRequest.send_user.first_name}</Text>
+                    {/* <Text style={styles.mutualCount}>
                       {friendRequest.mutualCount} mutual friends
-                    </Text>
+                    </Text> */}
                     <View style={styles.btnActionsWrapper}>
                       <TouchableOpacity style={styles.btnAddFriend}>
                         <Text
