@@ -59,12 +59,12 @@ export default class Login extends Component {
     });
   };
 
-  handleLogin = () => {
-    axios
-      .post("http://192.168.1.5:8080/users/login", {
+  handleLogin = async () => {
+    await axios
+      .post("http://172.16.2.55:8080/users/login", {
         email: this.state.inputEmail,
         password: this.state.inputPass,
-      })
+      }, clearTimeout)
       .then(async (res) => {
         const data = res.data.user;
         await SecureStore.setItemAsync("secure_token", data.token);
