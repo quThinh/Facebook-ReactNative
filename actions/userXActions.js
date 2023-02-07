@@ -42,30 +42,13 @@ export const FetchUserXSuccess = (user) => {
 };
 //Friends
 export const FetchUserXFriendsRequest = (userId) => {
-  const taskURI = `/users/${userId}`;
+  const taskURI = `friends/list/${userId}`;
   return (dispatch) => {
     axios
       .get(taskURI)
       .then((v) => {
-        const user = v.data;
-        const friendsWithRecent = user.friends;
-        const ids = friendsWithRecent?.map((friend) => friend.userId);
-        const queryIds = ids.join("&id=");
-        const taskURI2 = `/users?id=${queryIds}`;
-        axios
-          .get(taskURI2)
-          .then((result) => {
-            let friends = result.data;
-            friends = friends.map((friend, index) => {
-              friend.isRecent = friendsWithRecent[index].isRecent || false;
-              friend.mutualFriends = friendsWithRecent[index].mutualFriends;
-              return friend;
-            });
-            dispatch(FetchUserXFriendsSuccess(friends));
-          })
-          .catch((error) => {
-            dispatch(FetchUserXFriendsFailure(error));
-          });
+        const friends = v.data.listFriend;
+        dispatch(FetchUserXFriendsSuccess(friends));
       })
       .catch((error) => {
         dispatch(FetchUserXFriendsFailure(error));

@@ -14,7 +14,7 @@ export const FetchPostDetailRequest = (id, email, isShowModal) => {
       })
       .then((result) => {
         const showingPost = {
-          postDetail: result.data,
+          postDetail: result.data.articleTmp,
           isShowModal,
           isShowCommentModal: false,
         };

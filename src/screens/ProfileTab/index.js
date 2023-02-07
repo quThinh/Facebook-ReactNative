@@ -179,52 +179,6 @@ class index extends PureComponent {
           <FriendsShowing friends={friends} />
         </View>
         <PostTool />
-        <ScrollView
-          alignItems="center"
-          bounces={false}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          style={styles.navigationsWrapper}
-        >
-          <TouchableOpacity style={styles.navigation}>
-            <FontAwesome5Icon
-              style={styles.navigationIcon}
-              color="#000"
-              size={20}
-              name="images"
-            />
-            <Text style={{ fontSize: 16, fontWeight: "500" }}>Images</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navigation}>
-            <FontAwesome5Icon
-              style={styles.navigationIcon}
-              color="#000"
-              size={20}
-              name="video"
-            />
-            <Text style={{ fontSize: 16, fontWeight: "500" }}>Videos</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navigation}>
-            <FontAwesome5Icon
-              style={styles.navigationIcon}
-              color="#000"
-              size={20}
-              name="calendar-week"
-            />
-            <Text style={{ fontSize: 16, fontWeight: "500" }}>Life event</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{ ...styles.navigation, ...styles.lastNavigation }}
-          >
-            <FontAwesome5Icon
-              style={styles.navigationIcon}
-              color="#000"
-              size={20}
-              name="music"
-            />
-            <Text style={{ fontSize: 16, fontWeight: "500" }}>Music</Text>
-          </TouchableOpacity>
-        </ScrollView>
         <ProfilePosts profilePosts={profilePosts}></ProfilePosts>
       </ScrollView>
     );

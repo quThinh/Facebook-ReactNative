@@ -29,6 +29,9 @@ class index extends Component {
   onPressViewMessenger() {
     navigation.navigate("Messenger");
   }
+  onPressLogout() {
+    navigation.navigate("SignIn");
+  }
   onPressFullFriendsHandler() {
     // const { friends } = this.props;
     navigation.navigate("FullFriends");
@@ -328,7 +331,10 @@ class index extends Component {
               <Text style={styles.name}>Setting & Privacy</Text>
             </View>
           </ExTouchableOpacity>
-          <ExTouchableOpacity style={styles.btnOption}>
+          <ExTouchableOpacity
+            onPress={this.onPressLogout}
+            style={styles.btnOption}
+          >
             <Image
               style={styles.icon}
               source={require("../../../assets/icons/logout.png")}

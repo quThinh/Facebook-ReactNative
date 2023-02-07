@@ -42,7 +42,7 @@ export const LoginSuccess = (user) => {
 };
 //Friends
 export const FetchFriendsRequest = (userId) => {
-  const taskURI = `friends/all-be-request`;
+  const taskURI = `friends/list`;
   return async (dispatch) => {
     axios
       .get(taskURI, {
@@ -53,25 +53,8 @@ export const FetchFriendsRequest = (userId) => {
         },
       })
       .then((v) => {
-        const user = v.data;
-        const friendsWithRecent = user.friends;
-        const ids = friendsWithRecent?.map((friend) => friend.userId);
-        const queryIds = ids.join("&id=");
-        const taskURI2 = `/users?id=${queryIds}`;
-        axios
-          .get(taskURI2)
-          .then((result) => {
-            let friends = result.data;
-            friends = friends.map((friend, index) => {
-              friend.isRecent = friendsWithRecent[index].isRecent || false;
-              friend.mutualFriends = friendsWithRecent[index].mutualFriends;
-              return friend;
-            });
-            dispatch(FetchFriendsSuccess(friends));
-          })
-          .catch((error) => {
-            dispatch(FetchFriendsFailure(error));
-          });
+        const friends = v.data.listUser;
+        dispatch(FetchFriendsSuccess(friends));
       })
       .catch((error) => {
         dispatch(FetchFriendsFailure(error));

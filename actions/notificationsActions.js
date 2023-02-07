@@ -13,7 +13,6 @@ export const FetchNotificationsRequest = () => {
         },
       })
       .then((result) => {
-        console.log(result);
         const notifications = result.data.notifications;
         dispatch(FetchNotificationsSuccess(notifications));
       })

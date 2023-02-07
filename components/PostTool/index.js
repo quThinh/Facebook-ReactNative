@@ -17,9 +17,6 @@ class index extends Component {
       inputBgColor: "#fff",
     };
   }
-  onLiveStreamPressHandler() {
-    navigation.navigate("LiveStream");
-  }
   onPhotoUploaderPressHandler() {
     navigation.navigate("PhotoChooser");
   }

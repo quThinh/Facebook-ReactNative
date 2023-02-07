@@ -43,8 +43,6 @@ class Item extends Component {
   }
   onPressProfileHandler(emailID) {
     const { user } = this.props;
-    console.log(emailID);
-    console.log(user);
     if (emailID === user.email) {
       return navigation.navigate("Profile");
     }
@@ -54,9 +52,6 @@ class Item extends Component {
   }
   render() {
     const { user, item } = this.props;
-    // console.log(user);
-    console.log(item);
-    // console.log(this.props);
     return (
       <View style={styles.item}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
