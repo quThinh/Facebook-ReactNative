@@ -46,7 +46,7 @@ class Home extends Component {
           <RefreshControl refreshing={this.state.refreshing}
             onRefresh={this._onRefresh} />
         }>
-          {/* <PostTool>hello</PostTool> */}
+          <PostTool></PostTool>
           {/* <Stories></Stories> */}
           <View>
             {posts?.articleData?.map((item, index) => (

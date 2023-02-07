@@ -32,10 +32,9 @@ class FullPostTool extends Component {
     this._editorWrapperHeight = new Animated.Value(100);
     this.state = {
       selectedBgColorId: 0,
-    };
-    this.state1 = {
       inputStatus: "What are you thinking ?",
     };
+    this.onPressPostArticle = this.onPressPostArticle.bind(this);
     this._isShowBgColors = true;
     this._bgColorListWidth = new Animated.Value(screenWidth - 60);
     this._toggleZindexValue = new Animated.Value(2);
@@ -78,7 +77,7 @@ class FullPostTool extends Component {
           toValue: 0,
           duration: 200,
           useNativeDriver: false,
-        }).start(() => {});
+        }).start(() => { });
       });
       Animated.spring(this._bgColorListWidth, {
         toValue: screenWidth - 60,
@@ -117,29 +116,32 @@ class FullPostTool extends Component {
   onPressGoBackHandler() {
     navigation.goBack();
   }
-  onPressPostArticle() {
-    console.log("jr", this.state1);
-    // const taskURI = "articles";
-    // axios
-    //   .post(
-    //     taskURI,
-    //     {
-    //       headers: {
-    //         Authorization: `Bearer ${await SecureStore.getItemAsync(
-    //           "secure_token"
-    //         )}`,
-    //       },
-    //     },
-    //     {
-    //       article: {
-    //         title: this.state.inputStatus,
-    //         body: "Data information",
-    //         image: "",
-    //       },
-    //     }
-    //   )
-    //   .then((v) => {})
-    //   .catch((error) => {});
+  async onPressPostArticle() {
+    const taskURI = "/articles";
+    const token = await SecureStore.getItemAsync(
+      "secure_token"
+      );
+      console.log(token)
+      await axios
+      .post(
+        taskURI,
+        
+        {
+          article: {
+            title: this.state.inputStatus,
+            body: this.state.inputStatus,
+            image: "",
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+        )
+        .then((v) => console.log(v))
+        .catch((error) => console.log(error.response));
+        navigation.navigate('MainTab')
   }
   onContentSizeChangeHandler({ nativeEvent }) {
     const { height } = nativeEvent.contentSize;
@@ -188,6 +190,7 @@ class FullPostTool extends Component {
       selectedBgColorId: bgColorId,
     });
   }
+
   onTogglebBgColorListHandler() {
     if (!this._isShowBgColors) {
       Animated.timing(this._scaleTransformToggle, {
@@ -200,7 +203,7 @@ class FullPostTool extends Component {
           toValue: 0,
           duration: 200,
           useNativeDriver: false,
-        }).start(() => {});
+        }).start(() => { });
       });
       Animated.spring(this._bgColorListWidth, {
         toValue: screenWidth - 60,
@@ -220,7 +223,7 @@ class FullPostTool extends Component {
           toValue: 1,
           duration: 200,
           useNativeDriver: false,
-        }).start(() => {});
+        }).start(() => { });
       });
       Animated.timing(this._bgColorListWidth, {
         toValue: 0,
@@ -301,8 +304,8 @@ class FullPostTool extends Component {
               {isInGroup
                 ? groupDetail.name
                 : isPostToAnyOne
-                ? `On ${userX.name}'s timeline`
-                : "Create a post"}
+                  ? `On ${userX.name}'s timeline`
+                  : "Create a post"}
             </Text>
             <TouchableOpacity
               onPress={this.onPressPostArticle}
