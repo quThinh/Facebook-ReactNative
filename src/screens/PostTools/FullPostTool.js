@@ -24,12 +24,17 @@ import { connect } from "react-redux";
 import { FetchBgColorsRequest } from "../../../actions/bgColorsActions";
 import * as navigation from "../../../rootNavigation";
 import { STATUSBAR_HEIGHT } from "../../../constants";
+import * as SecureStore from "expo-secure-store";
+import axios from "axios";
 class FullPostTool extends Component {
   constructor(props) {
     super(props);
     this._editorWrapperHeight = new Animated.Value(100);
     this.state = {
       selectedBgColorId: 0,
+    };
+    this.state1 = {
+      inputStatus: "What are you thinking ?",
     };
     this._isShowBgColors = true;
     this._bgColorListWidth = new Animated.Value(screenWidth - 60);
@@ -111,6 +116,30 @@ class FullPostTool extends Component {
   }
   onPressGoBackHandler() {
     navigation.goBack();
+  }
+  onPressPostArticle() {
+    console.log("jr", this.state1);
+    // const taskURI = "articles";
+    // axios
+    //   .post(
+    //     taskURI,
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${await SecureStore.getItemAsync(
+    //           "secure_token"
+    //         )}`,
+    //       },
+    //     },
+    //     {
+    //       article: {
+    //         title: this.state.inputStatus,
+    //         body: "Data information",
+    //         image: "",
+    //       },
+    //     }
+    //   )
+    //   .then((v) => {})
+    //   .catch((error) => {});
   }
   onContentSizeChangeHandler({ nativeEvent }) {
     const { height } = nativeEvent.contentSize;
@@ -275,7 +304,10 @@ class FullPostTool extends Component {
                 ? `On ${userX.name}'s timeline`
                 : "Create a post"}
             </Text>
-            <TouchableOpacity style={styles.btnPost}>
+            <TouchableOpacity
+              onPress={this.onPressPostArticle}
+              style={styles.btnPost}
+            >
               <Text style={{ fontSize: 16 }}>POST</Text>
             </TouchableOpacity>
           </View>
@@ -336,7 +368,7 @@ class FullPostTool extends Component {
                     this
                   )}
                   placeholderTextColor={selectedBgColor.textColor}
-                  placeholder="What are you thinking ?"
+                  placeholder={this.state.inputStatus}
                   multiline
                   style={{
                     ...styles.editor,
@@ -345,6 +377,11 @@ class FullPostTool extends Component {
                     color: selectedBgColor.textColor,
                     fontWeight: "bold",
                   }}
+                  onChangeText={(status) =>
+                    this.setState({
+                      inputStatus: status,
+                    })
+                  }
                 ></TextInput>
               </Animated.View>
             </ImageBackground>

@@ -73,7 +73,8 @@ class Item extends Component {
                   )}
                 >
                   <Text style={{ fontSize: 16, fontWeight: "500" }}>
-                    {(item.User?.name && item.User?.name) || "Quang Thịnh"}
+                    {(item.User?.first_name && item.User?.first_name) ||
+                      "Quang Thịnh"}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -141,31 +142,6 @@ class Item extends Component {
             <Icon
               name="grin-squint"
               color="#f7ca51"
-              backgroundColor="white"
-              style={styles.reactionIcon}
-            ></Icon>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Icon
-              name="surprise"
-              color="#f7ca51"
-              backgroundColor="white"
-              style={styles.reactionIcon}
-            ></Icon>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Icon
-              name="sad-tear"
-              color="#f7ca51"
-              backgroundColor="white"
-              style={styles.reactionIcon}
-            ></Icon>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Icon
-              lineBreakMode={false}
-              name="angry"
-              color="#dc4311"
               backgroundColor="white"
               style={styles.reactionIcon}
             ></Icon>

@@ -3,7 +3,7 @@ import { getStatusBarHeight } from "react-native-status-bar-height";
 export const SCREEN_HEIGHT = Math.round(Dimensions.get("window").height);
 export const SCREEN_WIDTH = Math.round(Dimensions.get("window").width);
 export const STATUSBAR_HEIGHT = getStatusBarHeight();
-export const BASE_URL = "http://172.16.2.65:8080";
+export const BASE_URL = "http://109.123.234.163:8080";
 export const permission = {
   PUBLIC: 1,
   GROUP: 2,

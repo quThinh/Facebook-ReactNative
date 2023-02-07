@@ -64,7 +64,7 @@ export default class Login extends Component {
 
   handleSignup = () => {
     axios
-      .post("http://172.16.2.65:8080/users/register", {
+      .post("/users/register", {
         email: this.state.inputEmail,
         password: this.state.inputPass,
         firstname: this.state.inputFirstName,

@@ -61,8 +61,9 @@ export default class Login extends Component {
   };
 
   handleLogin = () => {
+    console.log(this.state);
     axios
-      .post("http://172.16.2.65:8080/users/login", {
+      .post("/users/login", {
         email: this.state.inputEmail,
         password: this.state.inputPass,
       })

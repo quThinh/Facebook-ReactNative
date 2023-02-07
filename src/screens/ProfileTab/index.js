@@ -117,7 +117,7 @@ class index extends PureComponent {
               />
               <Text style={styles.introLineText}>
                 Live in{" "}
-                <Text style={styles.introHightLight}>{user.live_in}</Text>
+                <Text style={styles.introHightLight}>{user.country}</Text>
               </Text>
             </View>
             <View style={styles.introLine}>
