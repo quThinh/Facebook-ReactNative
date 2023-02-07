@@ -17,7 +17,6 @@ import * as navigation from "../../../rootNavigation";
 import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5";
 import PostTool from "../../../components/PostTool";
 import FriendsShowing from "../../../components/FriendsShowing";
-import HighlightPhotos from "../../../components/HighlightPhotos";
 import ProfilePosts from "../../../components/ProfilePosts";
 import { FetchUserXRequest, ResetUserX } from "../../../actions/userXActions";
 import ExTouchableOpacity from "../../../components/ExTouchableOpacity";
@@ -46,7 +45,7 @@ class ProfileX extends PureComponent {
     });
   }
   render() {
-    const { user, highlightPhotos, profilePosts, myFriends } = this.props;
+    const { user, profilePosts, myFriends } = this.props;
     if (!user.hasOwnProperty("id")) return <View></View>;
     const friends = [...this.props.friends];
     let isFriend = false;
@@ -210,7 +209,6 @@ class ProfileX extends PureComponent {
                 </TouchableOpacity>
               </View>
             </View>
-            <HighlightPhotos photos={highlightPhotos} />
             <View
               style={{ borderBottomWidth: 0.5, borderBottomColor: "#ddd" }}
             ></View>
@@ -270,10 +268,7 @@ class ProfileX extends PureComponent {
               <Text style={{ fontSize: 16, fontWeight: "500" }}>Music</Text>
             </TouchableOpacity>
           </ScrollView>
-          <ProfilePosts
-            highLightPhotos={highlightPhotos}
-            profilePosts={profilePosts}
-          ></ProfilePosts>
+          <ProfilePosts profilePosts={profilePosts}></ProfilePosts>
         </ScrollView>
       </View>
     );
@@ -282,7 +277,6 @@ class ProfileX extends PureComponent {
 const mapStateToProps = (state) => {
   return {
     user: state.userX.user,
-    highlightPhotos: state.userX.highlightPhotos,
     friends: state.userX.friends,
     profilePosts: state.userX.posts,
     myFriends: state.user.friends,

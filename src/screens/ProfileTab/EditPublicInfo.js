@@ -10,7 +10,6 @@ import {
 import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5";
 import { SCREEN_HEIGHT, STATUSBAR_HEIGHT } from "../../../constants";
 import * as navigation from "../../../rootNavigation";
-import HighlightPhotos from "../../../components/HighlightPhotos";
 import ExTouchableOpacity from "../../../components/ExTouchableOpacity";
 export default class EditPublicInfo extends Component {
   constructor(props) {
@@ -20,7 +19,7 @@ export default class EditPublicInfo extends Component {
     navigation.goBack();
   }
   render() {
-    const { userInfo, highlightPhotos } = this.props.route.params;
+    const { userInfo } = this.props.route.params;
     return (
       <View style={styles.container}>
         <View style={styles.navigationBar}>
@@ -167,20 +166,6 @@ export default class EditPublicInfo extends Component {
                 <Text style={{ fontSize: 16, color: "#318bfb" }}>Add</Text>
               </TouchableOpacity>
             </View>
-          </View>
-          <View style={{ ...styles.detail }}>
-            <View style={styles.detailTitleWrapper}>
-              <Text style={styles.detailTitle}>HighLight Photos</Text>
-              <TouchableOpacity>
-                <Text style={{ fontSize: 16, color: "#318bfb" }}>Modify</Text>
-              </TouchableOpacity>
-            </View>
-            <TouchableOpacity
-              activeOpacity={0.9}
-              style={styles.highlightGallery}
-            >
-              <HighlightPhotos isFullRadius={true} photos={highlightPhotos} />
-            </TouchableOpacity>
           </View>
           <View
             activeOpacity={0.9}

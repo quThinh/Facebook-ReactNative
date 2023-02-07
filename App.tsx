@@ -38,6 +38,7 @@ import PostOptions from './src/screens/PostOptions'
 import PhotoChooser from './src/screens/PhotoChooser'
 
 import Login from './src/screens/SignInScreen'
+import Signup from './src/screens/SignUpScreen'
 
 import NotificationScreen from "./src/screens/NotificationTab";
 import NotificationOptions from './src/screens/NotificationTab/NotificationOptions'
@@ -79,14 +80,6 @@ const HomeTab = () => {
     </Stack.Navigator>
   );
 };
-
-// const GroupTab = () => {
-//   return (
-//     <Stack.Navigator screenOptions={{ headerShown: false }}>
-//       <Stack.Screen name="GroupScreen" component={GroupScreen} />
-//     </Stack.Navigator>
-//   );
-// };
 
 const ProfileTab = () => {
 	return (
@@ -133,19 +126,6 @@ const MainTab = () => {
         name="Home"
         component={HomeTab}
       />
-      {/* <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, focused }) => (
-            <Icon
-              name="users"
-              size={20}
-              color={focused ? "#318bfb" : "#ddd"}
-            ></Icon>
-          ),
-        }}
-        name="Group"
-        component={GroupTab}
-      /> */}
 			<Tab.Screen
 				options={{ tabBarIcon: ({ color, focused }) => (<Icon name='user-circle' size={22} color={focused ? '#318bfb' : '#ddd'}></Icon>) }}
 				name="Profile" component={ProfileTab} />
@@ -182,12 +162,11 @@ function App() {
       <NavigationContainer ref={navigationRef}>
         <rootStack.Navigator screenOptions={navigationOptions}>
           <rootStack.Screen name="SignIn" component={Login} />
-          {/* <Stack.Screen name="SignUp" component={SignUpScreen} /> */}
+          <rootStack.Screen name="SignUp" component={Signup} />
           <rootStack.Screen component={MainTab} name="MainTab" />
 					<rootStack.Screen name="PostDetail" component={PostDetail} />
 
 					<rootStack.Screen options={{ gestureEnabled: false }} name="PhotoChooser" component={PhotoChooser} />
-					{/* <rootStack.Screen options={{ gestureEnabled: false }} name="Camera" component={Camera} /> */}
 					<rootStack.Screen options={{ gestureEnabled: false }} name="Search" component={Search} />
 					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="Result" component={Result} />
 
@@ -202,11 +181,6 @@ function App() {
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="AvatarOptions" component={AvatarOptions} />
 
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="NotificationOptions" component={NotificationOptions} />
-
-					{/* <rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupCategory" component={GroupCategory} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupCategories" component={GroupCategories} />
-					<rootStack.Screen options={{ gestureEnabled: false }} name="GroupSearch" component={GroupSearch} />
-					<rootStack.Screen options={{ gestureEnabled: false, ...TransitionPresets.SlideFromRightIOS }} name="GroupProfile" component={GroupProfile} /> */}
 
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="CommentsPopUp" component={CommentsPopUp} />
 					<rootStack.Screen options={{ cardStyle: { backgroundColor: 'transparent' } }} name="SharePost" component={SharePost} />

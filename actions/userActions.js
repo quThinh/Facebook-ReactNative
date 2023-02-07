@@ -14,7 +14,6 @@ export const LoginRequest = () => {
       })
       .then((v) => {
         const user = v.data;
-        // dispatch(FetchHighLightPhotosRequest(user.id));
         dispatch(FetchFriendsRequest(user.id));
         dispatch(FetchProfilePostsRequest(user.id));
         dispatch(LoginSuccess(user));
@@ -41,35 +40,9 @@ export const LoginSuccess = (user) => {
     payload: user,
   };
 };
-// export const FetchHighLightPhotosRequest = (userId) => {
-//   const taskURI = `users/${userId}/photos?_limit=9&isHighLight=true`;
-//   return (dispatch) => {
-//     axios
-//       .get(taskURI)
-//       .then((v) => {
-//         const photos = v.data;
-//         dispatch(FetchHighLightPhotosSuccess(photos));
-//       })
-//       .catch((error) => {
-//         dispatch(FetchHighLightPhotosFailure(error));
-//       });
-//   };
-// };
-export const FetchHighLightPhotosFailure = (error) => {
-  return {
-    type: userActions.FETCH_HIGHLIGHT_PHOTOS_FAILURE,
-    error,
-  };
-};
-export const FetchHighLightPhotosSuccess = (photos) => {
-  return {
-    type: userActions.FETCH_HIGHLIGHT_PHOTOS_SUCCESS,
-    payload: photos,
-  };
-};
 //Friends
 export const FetchFriendsRequest = (userId) => {
-  const taskURI = `friends/all-be-request`;
+  const taskURI = `friends/list`;
   return async (dispatch) => {
     axios
       .get(taskURI, {
@@ -80,25 +53,8 @@ export const FetchFriendsRequest = (userId) => {
         },
       })
       .then((v) => {
-        const user = v.data;
-        const friendsWithRecent = user.friends;
-        const ids = friendsWithRecent?.map((friend) => friend.userId);
-        const queryIds = ids.join("&id=");
-        const taskURI2 = `/users?id=${queryIds}`;
-        axios
-          .get(taskURI2)
-          .then((result) => {
-            let friends = result.data;
-            friends = friends.map((friend, index) => {
-              friend.isRecent = friendsWithRecent[index].isRecent || false;
-              friend.mutualFriends = friendsWithRecent[index].mutualFriends;
-              return friend;
-            });
-            dispatch(FetchFriendsSuccess(friends));
-          })
-          .catch((error) => {
-            dispatch(FetchFriendsFailure(error));
-          });
+        const friends = v.data.listUser;
+        dispatch(FetchFriendsSuccess(friends));
       })
       .catch((error) => {
         dispatch(FetchFriendsFailure(error));

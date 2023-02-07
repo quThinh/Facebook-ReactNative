@@ -12,7 +12,6 @@ import {
   RefreshControl,
 } from "react-native";
 import * as SecureStore from "expo-secure-store";
-import { getUserInfo } from "../../actions/getUserInfo";
 import { Dimensions } from "react-native";
 import RecommendFriends from "../../components/RecommendFriends";
 import Item from "../../components/Item";
@@ -35,8 +34,6 @@ class Home extends Component {
     const { fetchPosts, postLogin } = this.props;
     fetchPosts();
     postLogin();
-    // const user = await getUserInfo();
-    // console.log(user)
   }
   render() {
     const { navigation } = this.props;

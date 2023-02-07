@@ -29,9 +29,10 @@ class Item extends Component {
       postDetail: item,
     });
   }
-  onPressPostImageHandler(id) {
+  onPressPostImageHandler(id, email) {
     navigation.navigate("PostDetail", {
       id,
+      email,
     });
   }
   onPressShareHandler() {
@@ -42,8 +43,6 @@ class Item extends Component {
   }
   onPressProfileHandler(emailID) {
     const { user } = this.props;
-    console.log(emailID);
-    console.log(user);
     if (emailID === user.email) {
       return navigation.navigate("Profile");
     }
@@ -53,9 +52,6 @@ class Item extends Component {
   }
   render() {
     const { user, item } = this.props;
-    // console.log(user);
-    console.log(item);
-    // console.log(this.props);
     return (
       <View style={styles.item}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -109,7 +105,11 @@ class Item extends Component {
           <Text style={styles.paragraph}>{item.content}</Text>
         </View>
         <TouchableOpacity
-          onPress={this.onPressPostImageHandler.bind(this, item.id)}
+          onPress={this.onPressPostImageHandler.bind(
+            this,
+            item.id,
+            item.User.email
+          )}
         >
           <View style={styles.imageContainer}>
             <ScaledImage

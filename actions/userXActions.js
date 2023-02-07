@@ -14,8 +14,6 @@ export const FetchUserXRequest = (emailID) => {
       })
       .then((v) => {
         let user = v.data;
-        console.log("succes");
-        dispatch(FetchUserXHighLightPhotosRequest(emailID));
         dispatch(FetchUserXFriendsRequest(emailID));
         dispatch(FetchUserXProfilePostsRequest(emailID));
         dispatch(FetchUserXSuccess(user));
@@ -42,58 +40,15 @@ export const FetchUserXSuccess = (user) => {
     payload: user,
   };
 };
-export const FetchUserXHighLightPhotosRequest = (userId) => {
-  const taskURI = `users/${userId}/photos?_limit=9&isHighLight=true`;
-  return (dispatch) => {
-    axios
-      .get(taskURI)
-      .then((v) => {
-        const photos = v.data;
-        dispatch(FetchUserXHighLightPhotosSuccess(photos));
-      })
-      .catch((error) => {
-        dispatch(FetchUserXHighLightPhotosFailure(error));
-      });
-  };
-};
-export const FetchUserXHighLightPhotosFailure = (error) => {
-  return {
-    type: userXActions.FETCH_USERX_HIGHLIGHT_PHOTOS_FAILURE,
-    error,
-  };
-};
-export const FetchUserXHighLightPhotosSuccess = (photos) => {
-  return {
-    type: userXActions.FETCH_USERX_HIGHLIGHT_PHOTOS_SUCCESS,
-    payload: photos,
-  };
-};
 //Friends
 export const FetchUserXFriendsRequest = (userId) => {
-  const taskURI = `/users/${userId}`;
+  const taskURI = `friends/list/${userId}`;
   return (dispatch) => {
     axios
       .get(taskURI)
       .then((v) => {
-        const user = v.data;
-        const friendsWithRecent = user.friends;
-        const ids = friendsWithRecent?.map((friend) => friend.userId);
-        const queryIds = ids.join("&id=");
-        const taskURI2 = `/users?id=${queryIds}`;
-        axios
-          .get(taskURI2)
-          .then((result) => {
-            let friends = result.data;
-            friends = friends.map((friend, index) => {
-              friend.isRecent = friendsWithRecent[index].isRecent || false;
-              friend.mutualFriends = friendsWithRecent[index].mutualFriends;
-              return friend;
-            });
-            dispatch(FetchUserXFriendsSuccess(friends));
-          })
-          .catch((error) => {
-            dispatch(FetchUserXFriendsFailure(error));
-          });
+        const friends = v.data.listFriend;
+        dispatch(FetchUserXFriendsSuccess(friends));
       })
       .catch((error) => {
         dispatch(FetchUserXFriendsFailure(error));
@@ -118,8 +73,8 @@ export const FetchUserXFriendsSuccess = (friends) => {
   };
 };
 //Profie posts
-export const FetchUserXProfilePostsRequest = (userId) => {
-  const taskURI = `articles/user/${userId}`;
+export const FetchUserXProfilePostsRequest = (emailID) => {
+  const taskURI = `articles?author=${emailID}`;
   return (dispatch) => {
     axios
       .get(taskURI)

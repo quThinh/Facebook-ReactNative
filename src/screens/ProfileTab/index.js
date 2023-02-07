@@ -13,7 +13,6 @@ import * as navigation from "../../../rootNavigation";
 import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5";
 import PostTool from "../../../components/PostTool";
 import FriendsShowing from "../../../components/FriendsShowing";
-import HighlightPhotos from "../../../components/HighlightPhotos";
 import ProfilePosts from "../../../components/ProfilePosts";
 class index extends PureComponent {
   constructor(props) {
@@ -21,10 +20,8 @@ class index extends PureComponent {
   }
   onPressEditPublicInfoHandler() {
     const user = { ...this.props.user };
-    const highlightPhotos = [...this.props.highlightPhotos];
     navigation.navigate("EditPublicInfo", {
       userInfo: user,
-      highlightPhotos,
     });
   }
   scrollToTop() {
@@ -41,7 +38,7 @@ class index extends PureComponent {
     navigation.navigate("ProfileSetting");
   }
   render() {
-    const { user, highlightPhotos, profilePosts } = this.props;
+    const { user, profilePosts } = this.props;
     if (!user.hasOwnProperty("id")) return <View></View>;
     const friends = [...this.props.friends];
     return (
@@ -160,7 +157,6 @@ class index extends PureComponent {
               </TouchableOpacity>
             </View>
           </View>
-          <HighlightPhotos photos={highlightPhotos} />
           <View
             style={{
               paddingVertical: 20,
@@ -183,64 +179,15 @@ class index extends PureComponent {
           <FriendsShowing friends={friends} />
         </View>
         <PostTool />
-        <ScrollView
-          alignItems="center"
-          bounces={false}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          style={styles.navigationsWrapper}
-        >
-          <TouchableOpacity style={styles.navigation}>
-            <FontAwesome5Icon
-              style={styles.navigationIcon}
-              color="#000"
-              size={20}
-              name="images"
-            />
-            <Text style={{ fontSize: 16, fontWeight: "500" }}>Images</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navigation}>
-            <FontAwesome5Icon
-              style={styles.navigationIcon}
-              color="#000"
-              size={20}
-              name="video"
-            />
-            <Text style={{ fontSize: 16, fontWeight: "500" }}>Videos</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navigation}>
-            <FontAwesome5Icon
-              style={styles.navigationIcon}
-              color="#000"
-              size={20}
-              name="calendar-week"
-            />
-            <Text style={{ fontSize: 16, fontWeight: "500" }}>Life event</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{ ...styles.navigation, ...styles.lastNavigation }}
-          >
-            <FontAwesome5Icon
-              style={styles.navigationIcon}
-              color="#000"
-              size={20}
-              name="music"
-            />
-            <Text style={{ fontSize: 16, fontWeight: "500" }}>Music</Text>
-          </TouchableOpacity>
-        </ScrollView>
-        <ProfilePosts
-          highLightPhotos={highlightPhotos}
-          profilePosts={profilePosts}
-        ></ProfilePosts>
+        <ProfilePosts profilePosts={profilePosts}></ProfilePosts>
       </ScrollView>
     );
   }
 }
 const mapStateToProps = (state) => {
+  // console.log(state.user.friends);
   return {
     user: state.user.user,
-    highlightPhotos: state.user.highlightPhotos,
     friends: state.user.friends,
     profilePosts: state.user.posts,
   };

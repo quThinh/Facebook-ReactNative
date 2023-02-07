@@ -28,9 +28,9 @@ class PostDetailModal extends Component {
     this.optionBottom = new Animated.Value(-screenHeight);
   }
   componentDidMount() {
-    const { id } = this.props.route.params;
+    const { id, email } = this.props.route.params;
     const { fetchPostDetail } = this.props;
-    fetchPostDetail(id, true);
+    fetchPostDetail(id, email, true);
   }
   onPressOptionIconHandler() {
     Animated.timing(this.optionBottom, {
@@ -225,7 +225,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     closePostDetailModal: () => dispatch(closePostDetailModal()),
     openCommentModal: () => dispatch(openCommentModal()),
-    fetchPostDetail: (id) => dispatch(FetchPostDetailRequest(id)),
+    fetchPostDetail: (id, email) => dispatch(FetchPostDetailRequest(id, email)),
   };
 };
 const screenHeight = Math.round(Dimensions.get("window").height);
