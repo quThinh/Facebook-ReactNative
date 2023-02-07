@@ -21,7 +21,7 @@ const reducer = (state = defaultState, action) => {
       break;
     case userXActions.FETCH_USERX_FAILURE:
       const { message } = action.error;
-      Alert.alert("Error", message);
+
       return state;
       break;
     case userXActions.FETCH_USERX_FRIENDS_REQUEST:
@@ -34,7 +34,7 @@ const reducer = (state = defaultState, action) => {
       break;
     case userXActions.FETCH_USERX_FRIENDS_FAILURE:
       const { message3 } = action.error;
-      Alert.alert("Error", message3);
+
       return state;
       break;
     case userXActions.FETCH_USERX_PROFILE_POSTS_REQUEST:
@@ -47,7 +47,7 @@ const reducer = (state = defaultState, action) => {
       break;
     case userXActions.FETCH_USERX_PROFILE_POSTS_FAILURE:
       const { message4 } = action.error;
-      Alert.alert("Error", message4);
+
       return state;
       break;
     default:
