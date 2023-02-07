@@ -9,6 +9,7 @@ import {
   Button,
   ScrollView,
   Alert,
+  RefreshControl,
 } from "react-native";
 import * as SecureStore from "expo-secure-store";
 import { Dimensions } from "react-native";
@@ -18,6 +19,16 @@ import PostTool from "../../components/PostTool";
 class Home extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      refreshing: false
+    }
+    this._onRefresh = () => {
+      console.log("hello")
+      this.setState({ refreshing: true });
+      this.componentDidMount().then(() => {
+        this.setState({ refreshing: false });
+      });
+    };
   }
   async componentDidMount() {
     const { fetchPosts, postLogin } = this.props;
@@ -31,15 +42,21 @@ class Home extends Component {
     // if (posts || posts?.articleData?.length === 0) return <View></View>;
     return (
       <View>
-        <ScrollView bounces={false} style={styles.listContainter}>
-          <PostTool></PostTool>
+        <ScrollView style={styles.listContainter} refreshControl={
+          <RefreshControl refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh} />
+        }>
+          {/* <PostTool>hello</PostTool> */}
           {/* <Stories></Stories> */}
-          {posts?.articleData?.map((item, index) => (
-            <View key={index}>
-              {index === 1 && <RecommendFriends></RecommendFriends>}
-              <Item item={item} key={index}></Item>
-            </View>
-          ))}
+          <View>
+            {posts?.articleData?.map((item, index) => (
+              <View key={index}>
+                {index === 1 && <RecommendFriends></RecommendFriends>}
+                <Item item={item} key={index}></Item>
+              </View>
+            ))}
+          </View>
+
         </ScrollView>
       </View>
     );

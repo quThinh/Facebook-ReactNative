@@ -7,7 +7,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest --watchAll",
-    "dbstart": "json-server .mock-db/db.json --host 192.168.1.5"
+    "dbstart": "json-server .mock-db/db.json --host 192.168.178.102"
   },
   "jest": {
     "preset": "jest-expo"

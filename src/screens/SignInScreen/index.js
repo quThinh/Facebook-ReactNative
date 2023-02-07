@@ -63,10 +63,14 @@ export default class Login extends Component {
   handleLogin = () => {
     console.log(this.state);
     axios
-      .post("/users/login", {
-        email: this.state.inputEmail,
-        password: this.state.inputPass,
-      })
+      .post(
+        "/users/login",
+        {
+          email: this.state.inputEmail,
+          password: this.state.inputPass,
+        },
+        clearTimeout
+      )
       .then(async (res) => {
         const data = res.data.user;
         await SecureStore.setItemAsync("secure_token", data.token);
