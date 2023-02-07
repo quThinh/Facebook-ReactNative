@@ -38,6 +38,7 @@ import PostOptions from './src/screens/PostOptions'
 import PhotoChooser from './src/screens/PhotoChooser'
 
 import Login from './src/screens/SignInScreen'
+import Signup from './src/screens/SignUpScreen'
 
 import NotificationScreen from "./src/screens/NotificationTab";
 import NotificationOptions from './src/screens/NotificationTab/NotificationOptions'
@@ -161,7 +162,7 @@ function App() {
       <NavigationContainer ref={navigationRef}>
         <rootStack.Navigator screenOptions={navigationOptions}>
           <rootStack.Screen name="SignIn" component={Login} />
-          {/* <Stack.Screen name="SignUp" component={SignUpScreen} /> */}
+          <rootStack.Screen name="SignUp" component={Signup} />
           <rootStack.Screen component={MainTab} name="MainTab" />
 					<rootStack.Screen name="PostDetail" component={PostDetail} />
 

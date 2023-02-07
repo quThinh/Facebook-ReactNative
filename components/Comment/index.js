@@ -24,7 +24,7 @@ export default class Comment extends Component {
         <View style={styles.centerContainer}>
           <View style={styles.contentContainer}>
             <TouchableOpacity>
-              <Text style={styles.name}>{comment.name}</Text>
+              <Text style={styles.name}>{comment.User.first_name}</Text>
             </TouchableOpacity>
             <Text style={styles.content}>{comment.content}</Text>
           </View>

@@ -185,6 +185,7 @@ class index extends PureComponent {
   }
 }
 const mapStateToProps = (state) => {
+  // console.log(state.user.friends);
   return {
     user: state.user.user,
     friends: state.user.friends,

@@ -25,10 +25,12 @@ export default class Login extends Component {
     this.state = {
       email: "Phone or Email",
       password: "Password",
-      buttonLogin: "Log In",
+      name: "Name",
+      country: "Country",
+      buttonLogin: "Sign Up",
       buttonForgotPassword: "Forgot Password?",
       dashOr: "OR",
-      buttonRegister: "Create New Facebook Account",
+      buttonRegister: "Login",
 
       modalVisible: false,
     };
@@ -38,7 +40,7 @@ export default class Login extends Component {
     this.setState({
       email: "Phone or Email",
       password: "Password",
-      buttonLogin: "Log In",
+      buttonLogin: "Sign Up",
       buttonForgotPassword: "Forgot Password?",
       dashOr: "OR",
       buttonRegister: "Create New Facebook Account",
@@ -49,52 +51,36 @@ export default class Login extends Component {
     this.setState({
       email: "Số điện thoại hoặc email",
       password: "Mật khẩu",
-      buttonLogin: "Đăng nhập",
+      buttonLogin: "Đăng ký",
       buttonForgotPassword: "Quên mật khẩu ?",
       dashOr: "Hoặc",
       buttonRegister: "Tạo tài khoản facebook mới",
     });
   };
 
-  handleSignup = () => {
-    navigation.navigate("SignUp");
+  handleSignin = () => {
+    navigation.navigate("SignIn");
   };
 
-  handleLogin = () => {
+  handleSignup = () => {
     axios
-      .post("http://172.16.2.65:8080/users/login", {
+      .post("http://172.16.2.65:8080/users/register", {
         email: this.state.inputEmail,
         password: this.state.inputPass,
+        firstname: this.state.inputFirstName,
+        country: this.state.inputCountry,
       })
-      .then(async (res) => {
-        const data = res.data.user;
-        await SecureStore.setItemAsync("secure_token", data.token);
-        if (data == null) {
-          alert("Thiếu thông tin");
-          console.log(res);
-        } else {
-          console.log("success");
-          console.log(data.token);
-          navigation.navigate("MainTab");
-        }
+      .then((res) => {
+        navigation.navigate("SignIn");
       })
       .catch((err) => {
-        console.log("auth create", err);
-        console.log(this.state.inputEmail);
-        alert("Sai tên đăng nhập hoặc mật khẩu");
+        alert(err);
       });
   };
 
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
   }
-  // goToHome = (screenName) => {
-  //   Navigation.push(this.props.componentId,{
-  //     component:{
-  //       name:screenName
-  //     }
-  //   });
-  // }
 
   render() {
     return (
@@ -164,17 +150,33 @@ export default class Login extends Component {
                   })
                 }
               />
+              <TextInput
+                style={styles.textInput}
+                placeholder={this.state.name}
+                underlineColorAndroid="#2D598C"
+                onChangeText={(name) =>
+                  this.setState({
+                    inputFirstName: name,
+                  })
+                }
+              />
+              <TextInput
+                style={styles.textInput}
+                placeholder={this.state.country}
+                underlineColorAndroid="#2D598C"
+                onChangeText={(country) =>
+                  this.setState({
+                    inputCountry: country,
+                  })
+                }
+              />
               <Button
                 title={this.state.buttonLogin}
                 color="#213970"
-                onPress={this.handleLogin}
+                onPress={this.handleSignup}
               />
             </View>
-            <View style={styles.wrapperButtonForgot}>
-              <Text style={styles.buttonForgot}>
-                {this.state.buttonForgotPassword}
-              </Text>
-            </View>
+
             <View style={styles.wrapperHr}>
               <Text style={styles.hr}></Text>
               <Text
@@ -184,11 +186,10 @@ export default class Login extends Component {
               </Text>
               <Text style={styles.hr}></Text>
             </View>
-
             <View style={styles.wrapperButtonSignUp}>
               <Button
                 color="#00A400"
-                onPress={this.handleSignup}
+                onPress={this.handleSignin}
                 title={this.state.buttonRegister}
               />
             </View>

@@ -16,6 +16,10 @@ export default class PostOptions extends Component {
       isVisible: false,
     };
   }
+  onPressReport() {
+    alert("Report successfully");
+    navigation.navigate("MainTab");
+  }
   onPressCopyPostLinkHandler() {
     const { postDetail } = this.props.route.params;
     setTimeout(() => {
@@ -53,7 +57,12 @@ export default class PostOptions extends Component {
                 ></FontAwesome5Icon>
               </View>
               <View>
-                <Text style={styles.postOptionTitle}>Report this post</Text>
+                <Text
+                  onPress={this.onPressReport}
+                  style={styles.postOptionTitle}
+                >
+                  Report this post
+                </Text>
                 <Text style={styles.postOptionSubtitle}>
                   I'm worry about this post
                 </Text>
